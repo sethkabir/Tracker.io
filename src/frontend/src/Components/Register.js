@@ -99,8 +99,8 @@ function Register() {
   return (
     <div className="flex flex-col lg:flex-row sm:place-content-evenly">
       <Image />
-      <SignUp />
-      {/* <Login /> */}
+      {/* <SignUp /> */}
+      <Login />
     </div>
   );
 }
