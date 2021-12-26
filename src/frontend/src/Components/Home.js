@@ -69,7 +69,7 @@ function MainPage() {
   );
 }
 
-function Test() {
+function Home() {
   return (
     <div className="flex">
       <SideDrawer />
@@ -78,4 +78,4 @@ function Test() {
   );
 }
 
-export default Test;
+export default Home;

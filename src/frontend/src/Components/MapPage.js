@@ -9,14 +9,14 @@ function Heading() {
 
 function TextButtons() {
   return (
-    <div className="m-1 p-1 z-20 ">
-      <div className="grid grid-cols-3 gap-5">
-        <div className="rounded-xl h-24 bg-green-200">02</div>
-        <div className="rounded-xl h-24 bg-green-200">03</div>
-        <div className="rounded-xl h-24 bg-green-200">04</div>
-        <div className="rounded-xl h-24 bg-green-200">05</div>
-        <div className="rounded-xl h-24 bg-green-200">06</div>
-        <div className="rounded-xl h-24 bg-green-200">07</div>
+    <div className="m-1 p-1 z-20 flex place-content-center">
+      <div className="flex overflow-x-scroll space-x-5 px-5 w-96 max-w-xl grow">
+        <div className="flex-shrink-0 rounded-xl h-24 w-24 bg-green-200">02</div>
+        <div className="flex-shrink-0 rounded-xl h-24 w-24 bg-green-200">03</div>
+        <div className="flex-shrink-0 rounded-xl h-24 w-24 bg-green-200">04</div>
+        <div className="flex-shrink-0 rounded-xl h-24 w-24 bg-green-200">05</div>
+        <div className="flex-shrink-0 rounded-xl h-24 w-24 bg-green-200">06</div>
+        <div className="flex-shrink-0 rounded-xl h-24 w-24 bg-green-200">07</div>
       </div>
     </div>
   );
