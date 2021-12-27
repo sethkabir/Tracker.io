@@ -1,3 +1,11 @@
+import {
+  MenuIcon,
+  LocationMarkerIcon,
+  MapIcon,
+  UserCircleIcon,
+  ExclamationCircleIcon,
+} from "@heroicons/react/solid";
+
 function SideDrawer() {
   return (
     <div className="hidden sm:bg-red-200 sm:grow sm:h-screen sm:block ">
@@ -10,7 +18,9 @@ function Heading() {
   return (
     <div className="flex place-content-between m-2">
       <div className="font-bold text-3xl">TrackerApp</div>
-      <button className="sm:hidden">|||</button>
+      <button className="sm:hidden">
+        <MenuIcon className="h-8 w-8" />
+      </button>
     </div>
   );
 }
@@ -29,17 +39,21 @@ function Buttons() {
   return (
     <div className="flex flex-col sm:flex-row h-full basis-1/3">
       <div className="grow grid grid-cols-2  md:max-w-md">
-        <div className="bg-blue-300 hover:bg-blue-500 h-44 m-5 rounded-2xl p-5 hover:text-white">
-          New Trip
+        <div className="bg-blue-300 hover:bg-blue-500 h-44 m-5 rounded-2xl p-5 hover:text-white flex flex-col relative">
+          <div className="text-xl">New Trip</div>
+          <LocationMarkerIcon className="h-14 w-14 absolute place-self-end mt-20 " />
         </div>
-        <div className="bg-blue-300 hover:bg-blue-500 h-44 m-5  rounded-2xl p-5 hover:text-white">
-          Join Existing trip
+        <div className="bg-blue-300 hover:bg-blue-500 h-44 m-5  rounded-2xl p-5 hover:text-white flex flex-col relative">
+          <div className="text-xl">Join Existing trip</div>
+          <MapIcon className="h-14 w-14 absolute place-self-end mt-20 " />
         </div>
-        <div className="bg-blue-300 hover:bg-blue-500 h-44 m-5 rounded-2xl p-5 hover:text-white">
-          Emergency Contact
+        <div className="bg-blue-300 hover:bg-blue-500 h-44 m-5 rounded-2xl p-5 hover:text-white flex flex-col relative">
+          <div className="text-xl">Emergency Contact</div>
+          <ExclamationCircleIcon className="h-14 w-14 absolute place-self-end mt-20 " />
         </div>
-        <div className="bg-blue-300 hover:bg-blue-500 h-44 m-5 rounded-2xl p-5 hover:text-white">
-          Profile
+        <div className="bg-blue-300 hover:bg-blue-500 h-44 m-5 rounded-2xl p-5 hover:text-white flex flex-col relative">
+          <div className="text-xl">Profile</div>
+          <UserCircleIcon className="h-14 w-14 absolute place-self-end mt-20 " />
         </div>
       </div>
       <Statistics />

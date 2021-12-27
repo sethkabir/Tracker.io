@@ -1,8 +1,11 @@
+import { MenuIcon } from '@heroicons/react/solid'
+
+
 function Heading() {
   return (
     <div className="flex place-content-between p-2 z-30 bg-white">
       <div className="font-bold text-3xl">TrackerApp</div>
-      <button className="">|||</button>
+      <button className=""><MenuIcon className='h-8 w-8'/></button>
     </div>
   );
 }
