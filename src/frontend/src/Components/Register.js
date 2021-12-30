@@ -1,4 +1,5 @@
 import logo from "../Images/p3.jpg";
+import { Outlet } from "react-router-dom";
 
 // The image present in the left side
 function Image() {
@@ -99,10 +100,9 @@ function Register() {
   return (
     <div className="flex flex-col lg:flex-row sm:place-content-evenly">
       <Image />
-      <SignUp />
-      {/* <Login /> */}
+      <Outlet />
     </div>
   );
 }
 
-export default Register;
+export {Register, SignUp, Login};
