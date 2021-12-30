@@ -6,10 +6,10 @@ import Profile from "./Components/Profile";
 function App() {
   return (
     <div>
-      {/* <Register /> */}
+      <Register />
       {/* <Home /> */}
       {/* <MapPage /> */}
-      <Profile />
+      {/* <Profile /> */}
     </div>
   );
 }
