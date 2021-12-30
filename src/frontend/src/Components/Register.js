@@ -1,4 +1,5 @@
 import logo from "../Images/p3.jpg";
+import { Link, Outlet } from "react-router-dom";
 
 // The image present in the left side
 function Image() {
@@ -45,8 +46,11 @@ function Login() {
           <button className=" bg-blue-200 hover:bg-blue-500 hover:text-white mt-20 rounded-lg h-10 lg:w-96 lg:mx-auto">
             Log in with LinkdIn
           </button>
+
           <button className=" bg-blue-200 hover:bg-blue-500 hover:text-white mt-20 rounded-lg h-10 lg:w-96 lg:mx-auto">
-            Register using email id
+            <Link to="/signup">
+              <div> Register using email id</div>
+            </Link>
           </button>
         </div>
       </div>
@@ -68,6 +72,16 @@ function SignUp() {
         <div className="text-blue-400">Sign In form</div>
         <input
           className="block h-10 border border-gray-300 rounded-md focus:border-blue-500  outline-none tracking-widest"
+          placeholder="First Name"
+          type="text"
+        />
+        <input
+          className="block h-10 border border-gray-300 rounded-md focus:border-blue-500  outline-none tracking-widest"
+          placeholder="Last Name"
+          type="text"
+        />
+        <input
+          className="block h-10 border border-gray-300 rounded-md focus:border-blue-500  outline-none tracking-widest"
           placeholder="Email Id"
           type="text"
         />
@@ -81,11 +95,11 @@ function SignUp() {
           placeholder="Account Username"
           type="text"
         />
-        <input
+        {/* <input
           className="block h-10 border border-gray-300 rounded-md focus:border-blue-500  outline-none tracking-widest"
           placeholder="Contact"
           type="text"
-        />
+        /> */}
         <button className="bg-blue-200 hover:bg-blue-600 hover:text-white w-20 h-10 rounded-md">
           Login
         </button>
@@ -99,10 +113,9 @@ function Register() {
   return (
     <div className="flex flex-col lg:flex-row sm:place-content-evenly">
       <Image />
-      <SignUp />
-      {/* <Login /> */}
+      <Outlet />
     </div>
   );
 }
 
-export default Register;
+export { Register, SignUp, Login };
