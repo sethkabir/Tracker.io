@@ -1,10 +1,12 @@
 import logo from "../Images/p3.jpg";
 import { Link, Outlet } from "react-router-dom";
+import React, { useState } from "react";
+
 
 // The image present in the left side
 function Image() {
   return (
-    <div className="flex flex-grow place-content-center h-screen max-w-4xl bg-blue-200">
+    <div className="flex flex-grow place-content-center h-full max-w-4xl bg-blue-200">
       <img alt="img" src={logo} />
     </div>
   );
@@ -60,6 +62,34 @@ function Login() {
 
 // This component is the signup using email registeration
 function SignUp() {
+
+
+
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [emailId, setEmailId] = useState("");
+
+  async function signUp() {
+    let item = {firstName, lastName, username, password, emailId}
+    console.log(item)
+
+
+    let result = await fetch("http://127.0.0.1:8080/api/auth/signup", {
+      method: 'POST',
+      body: JSON.stringify(item),
+      headers: {
+        "Content-Type": 'application/json',
+        "Accept": 'application/json',
+      }
+    })
+    result = await result.json()
+    console.log("result", result)
+
+
+  }
+
   return (
     <div className="flex flex-grow flex-col mx-2">
       <div className="flex text-5xl mx-auto sm:mt-35 mt-20  italic">
@@ -72,35 +102,43 @@ function SignUp() {
         <div className="text-blue-400">Sign In form</div>
         <input
           className="block h-10 border border-gray-300 rounded-md focus:border-blue-500  outline-none tracking-widest"
+          value={firstName}
+          onChange={(e) => setFirstName(e.target.value)}
           placeholder="First Name"
           type="text"
         />
         <input
           className="block h-10 border border-gray-300 rounded-md focus:border-blue-500  outline-none tracking-widest"
+          value={lastName}
+          onChange={(e) => setLastName(e.target.value)}
           placeholder="Last Name"
           type="text"
         />
         <input
           className="block h-10 border border-gray-300 rounded-md focus:border-blue-500  outline-none tracking-widest"
-          placeholder="Email Id"
-          type="text"
-        />
-        <input
-          className="block h-10 border border-gray-300 rounded-md focus:border-blue-500  outline-none tracking-widest"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
           placeholder="Password"
           type="password"
         />
         <input
           className="block h-10 border border-gray-300 rounded-md focus:border-blue-500  outline-none tracking-widest"
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}
           placeholder="Account Username"
           type="text"
         />
-        {/* <input
+        <input
           className="block h-10 border border-gray-300 rounded-md focus:border-blue-500  outline-none tracking-widest"
-          placeholder="Contact"
+          value={emailId}
+          onChange={(e) => setEmailId(e.target.value)}
+          placeholder="Email Id"
           type="text"
-        /> */}
-        <button className="bg-blue-200 hover:bg-blue-600 hover:text-white w-20 h-10 rounded-md">
+        />
+        <button
+          onClick={signUp}
+          className="bg-blue-200 hover:bg-blue-600 hover:text-white w-20 h-10 rounded-md"
+        >
           Sign Up
         </button>
       </div>
@@ -111,7 +149,7 @@ function SignUp() {
 //Actual exported component
 function Register() {
   return (
-    <div className="flex flex-col lg:flex-row sm:place-content-evenly">
+    <div className="flex flex-col lg:flex-row sm:place-content-evenly h-screen">
       <Image />
       <Outlet />
     </div>
