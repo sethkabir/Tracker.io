@@ -19,6 +19,6 @@ from .views import index
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('app/', include('tracker.urls')),
+    path('api/', include('tracker.urls')),
     path('', index),
 ]
