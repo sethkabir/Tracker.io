@@ -20,4 +20,4 @@ def signup(request):
         serializer.save()
     else:
         print(request.data,serializer.errors)
-    return Response(serializer.data)
+    return Response(serializer.errors)
