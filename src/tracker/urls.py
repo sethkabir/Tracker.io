@@ -17,5 +17,6 @@ from django.urls import path
 from .views import *
 
 urlpatterns = [
+    path('', api_overview),
     path('auth/signup', signup),
 ]
