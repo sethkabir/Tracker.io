@@ -101,7 +101,7 @@ function SignUp() {
           type="text"
         /> */}
         <button className="bg-blue-200 hover:bg-blue-600 hover:text-white w-20 h-10 rounded-md">
-          Login
+          Sign Up
         </button>
       </div>
     </div>
