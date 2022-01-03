@@ -1,4 +1,6 @@
-import {Register, SignUp, Login} from "./Components/Register";
+import Register from "./Components/Register";
+import Login from "./Components/Login";
+import SignUp from "./Components/SignUp";
 import Home from "./Components/Home";
 import MapPage from "./Components/MapPage";
 import Profile from "./Components/Profile";

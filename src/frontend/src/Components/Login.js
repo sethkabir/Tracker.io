@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 
+
 function Login() {
   return (
     <div className="flex flex-grow flex-col mx-2">
@@ -47,4 +48,4 @@ function Login() {
   );
 }
 
-export default Login();
+export default Login;

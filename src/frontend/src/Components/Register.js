@@ -1,7 +1,5 @@
 import logo from "../Images/p3.jpg";
 import { Outlet } from "react-router-dom";
-import SignUp from "./SignUp";
-import Login from "./Login";
 
 // The image present in the left side
 function Image() {
@@ -22,4 +20,4 @@ function Register() {
   );
 }
 
-export { Register, SignUp, Login };
+export default Register;

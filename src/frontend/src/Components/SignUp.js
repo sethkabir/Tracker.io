@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom";
 import React, { useState } from "react";
 import axios from "axios";
 
-function SignUp() {
+const SignUp = () => {
   axios.defaults.xsrfHeaderName = "X-CSRFTOKEN";
   axios.defaults.xsrfCookieName = "csrftoken";
 
@@ -88,4 +88,4 @@ function SignUp() {
   );
 }
 
-export default SignUp();
+export default SignUp;
