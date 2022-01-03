@@ -4,14 +4,21 @@ import SignUp from "./Components/SignUp";
 import Home from "./Components/Home";
 import MapPage from "./Components/MapPage";
 import Profile from "./Components/Profile";
+import LandingPage from "./Components/LandingPage";
 
-import {BrowserRouter as Router, Routes, Route, Navigate} from 'react-router-dom';
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Navigate,
+} from "react-router-dom";
 
-function App() {
-  return (
+
+function App(){
+  return(
     <Router>
       <Routes>
-        <Route path="/" element = {<Navigate replace to = "/login" />} /> 
+      <Route path="/" element = {<LandingPage />} /> 
         <Route path="/" element = {<Register />}>
           <Route path="/login" element = {<Login />} />
           <Route path="/signup" element = {<SignUp />} />
@@ -23,5 +30,7 @@ function App() {
     </Router>
   );
 }
+
+
 
 export default App;

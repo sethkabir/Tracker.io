@@ -20,5 +20,10 @@ from .views import index
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include('tracker.urls')),
-    path('', index),
+    path('/', index),
+    path('login/',index),
+    path('signup/',index),
+    path('home/',index),
+    path('mapPage/',index),
+    path('profile/',index),
 ]
