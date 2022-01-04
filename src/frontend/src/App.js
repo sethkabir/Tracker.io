@@ -27,7 +27,8 @@ const App = () => {
     <Router>
       <Routes>
         <Route path="/" element={<LandingPage/>} />
-
+        
+        <Route exact path="/auth" element={<Navigate replace to="/auth/login"/>} />
         <Route exact path="/auth" element={<Register />}>
           <Route path="login" element={<Login />} />
           <Route path="signup" element={<SignUp />} />
