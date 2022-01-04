@@ -11,26 +11,37 @@ import {
   Routes,
   Route,
   Navigate,
+  Outlet,
 } from "react-router-dom";
 
 
-function App(){
+const Dashboard = () =>{
   return(
-    <Router>
-      <Routes>
-      <Route path="/" element = {<LandingPage />} /> 
-        <Route path="/" element = {<Register />}>
-          <Route path="/login" element = {<Login />} />
-          <Route path="/signup" element = {<SignUp />} />
-        </Route>
-        <Route path="/home" element = {<Home />} />
-        <Route path="/mapPage" element = {<MapPage />} />
-        <Route path="/profile" element = {<Profile />} />
-      </Routes>
-    </Router>
+      <Outlet />
   );
 }
 
 
+const App = () => {
+  return (
+    <Router>
+      <Routes>
+        <Route path="/" element={<LandingPage/>} />
+
+        <Route exact path="/auth" element={<Register />}>
+          <Route path="login" element={<Login />} />
+          <Route path="signup" element={<SignUp />} />
+        </Route>
+
+        <Route exact path="/dashboard" element={<Navigate replace to="/dashboard/home"/>} />
+        <Route exact path="/dashboard" element={<Dashboard />}>
+          <Route path="home" element={<Home />} />
+          <Route path="mapPage" element={<MapPage />} />
+          <Route path="profile" element={<Profile />} />
+        </Route>
+      </Routes>
+    </Router>
+  );
+};
 
 export default App;

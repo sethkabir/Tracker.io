@@ -41,7 +41,7 @@ function Buttons() {
   return (
     <div className="flex flex-col sm:flex-row h-full basis-1/3">
       <div className="grow grid grid-cols-2  md:max-w-md">
-        <Link to="/mapPage">
+        <Link to="/dashboard/mapPage">
           <div className="bg-blue-300 hover:bg-blue-500 h-44 m-5 rounded-2xl p-5 hover:text-white flex flex-col relative">
             <div className="text-xl">New Trip</div>
             <LocationMarkerIcon className="h-14 w-14 absolute place-self-end mt-20 " />
@@ -55,7 +55,7 @@ function Buttons() {
           <div className="text-xl">Emergency Contact</div>
           <ExclamationCircleIcon className="h-14 w-14 absolute place-self-end mt-20 " />
         </div>
-        <Link to="/profile">
+        <Link to="/dashboard/profile">
           <div className="bg-blue-300 hover:bg-blue-500 h-44 m-5 rounded-2xl p-5 hover:text-white flex flex-col relative">
             <div className="text-xl">Profile</div>
             <UserCircleIcon className="h-14 w-14 absolute place-self-end mt-20 " />

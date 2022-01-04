@@ -38,7 +38,7 @@ function Login() {
           </button>
 
           <button className=" bg-blue-200 hover:bg-blue-500 hover:text-white mt-20 rounded-lg h-10 lg:w-96 lg:mx-auto">
-            <Link to="/signup">
+            <Link to="/auth/signup">
               <div> Register using email id</div>
             </Link>
           </button>
