@@ -9,7 +9,8 @@ from rest_framework.response import Response
 def api_overview(request):
     '''Returns list of API endpoints'''
     api_urls = {
-        'create-account': 'api/auth/signup/'
+        'signup': 'api/auth/signup/',
+        'login': 'api/auth/login'
     }
     return Response(api_urls)
 
@@ -18,6 +19,15 @@ def signup(request):
     serializer = SignupSerializer(data=request.data)
     if serializer.is_valid():
         serializer.save()
+    else:
+        print(request.data,serializer.errors)
+    return Response(serializer.errors)
+
+@api_view(['POST'])
+def login(request):
+    serializer = SignupSerializer(data=request.data)
+    if serializer.is_valid():
+        pass
     else:
         print(request.data,serializer.errors)
     return Response(serializer.errors)
