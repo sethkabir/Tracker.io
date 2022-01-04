@@ -15,6 +15,7 @@ import {
 } from "react-router-dom";
 
 
+//this will be an empty component which will render all the pages other than the auth pages!!
 const Dashboard = () =>{
   return(
       <Outlet />
@@ -28,6 +29,7 @@ const App = () => {
       <Routes>
         <Route path="/" element={<LandingPage/>} />
 
+        <Route exact path="/auth" element={<Navigate replace to="/auth/login"/>} />
         <Route exact path="/auth" element={<Register />}>
           <Route path="login" element={<Login />} />
           <Route path="signup" element={<SignUp />} />
