@@ -1,15 +1,5 @@
-import { MenuIcon, UserCircleIcon } from "@heroicons/react/solid";
-
-function Navbar() {
-  return (
-    <div className="flex place-content-between p-2 z-30 bg-white">
-      <div className="font-bold text-3xl">TrackerApp</div>
-      <button>
-        <MenuIcon className="h-8 w-8" />
-      </button>
-    </div>
-  );
-}
+import { UserCircleIcon } from "@heroicons/react/solid";
+import Navbar from "./Navbar";
 
 function UserProfile() {
   return (

@@ -1,14 +1,5 @@
-import { MenuIcon } from '@heroicons/react/solid'
-
-
-function Heading() {
-  return (
-    <div className="flex place-content-between p-2 z-30 bg-white">
-      <div className="font-bold text-3xl">TrackerApp</div>
-      <button className=""><MenuIcon className='h-8 w-8'/></button>
-    </div>
-  );
-}
+import Navbar from './Navbar';
+import mapLogo from '../Images/map.jpg';
 
 function TextButtons() {
   return (
@@ -38,13 +29,13 @@ function EmergencyButtons() {
 }
 
 function MapComponent() {
-  return <div className="flex bg-blue-300 absolute h-full w-screen">video</div>;
+  return <div className="flex bg-blue-300 absolute h-full w-screen"></div>;
 }
 
 function MapPage() {
   return (
     <div className="flex flex-col h-screen">
-      <Heading />
+      <Navbar/>
       <div className="h-full flex-col-reverse flex">
         <TextButtons />
         <EmergencyButtons />

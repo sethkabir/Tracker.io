@@ -1,28 +1,16 @@
 import {
-  MenuIcon,
   LocationMarkerIcon,
   MapIcon,
   UserCircleIcon,
   ExclamationCircleIcon,
 } from "@heroicons/react/solid";
-
+import Navbar from "./Navbar";
 import { Link } from "react-router-dom";
 
 function SideDrawer() {
   return (
-    <div className="hidden sm:bg-red-200 sm:grow sm:h-screen sm:block ">
+    <div className="hidden sm:bg-blue-200 sm:grow sm:h-screen sm:block ">
       Side Drawer
-    </div>
-  );
-}
-
-function Heading() {
-  return (
-    <div className="flex place-content-between m-2">
-      <div className="font-bold text-3xl">TrackerApp</div>
-      <button className="sm:hidden">
-        <MenuIcon className="h-8 w-8" />
-      </button>
     </div>
   );
 }
@@ -42,16 +30,16 @@ function Buttons() {
     <div className="flex flex-col sm:flex-row h-full basis-1/3">
       <div className="grow grid grid-cols-2  md:max-w-md">
         <Link to="/dashboard/mapPage">
-          <div className="bg-blue-300 hover:bg-blue-500 h-44 m-5 rounded-2xl p-5 hover:text-white flex flex-col relative">
+          <div className="bg-green-300 hover:bg-green-500 h-44 m-5 rounded-2xl p-5 hover:text-white flex flex-col relative">
             <div className="text-xl">New Trip</div>
             <LocationMarkerIcon className="h-14 w-14 absolute place-self-end mt-20 " />
           </div>
         </Link>
-        <div className="bg-blue-300 hover:bg-blue-500 h-44 m-5  rounded-2xl p-5 hover:text-white flex flex-col relative">
+        <div className="bg-orange-300 hover:bg-orange-500 h-44 m-5  rounded-2xl p-5 hover:text-white flex flex-col relative">
           <div className="text-xl">Join Existing trip</div>
           <MapIcon className="h-14 w-14 absolute place-self-end mt-20 " />
         </div>
-        <div className="bg-blue-300 hover:bg-blue-500 h-44 m-5 rounded-2xl p-5 hover:text-white flex flex-col relative">
+        <div className="bg-red-300 hover:bg-red-500 h-44 m-5 rounded-2xl p-5 hover:text-white flex flex-col relative">
           <div className="text-xl">Emergency Contact</div>
           <ExclamationCircleIcon className="h-14 w-14 absolute place-self-end mt-20 " />
         </div>
@@ -82,7 +70,7 @@ function Friends() {
 function MainPage() {
   return (
     <div className="grow basis-5/6 flex flex-col sm:h-screen overflow-auto ">
-      <Heading />
+      <Navbar />
       <Buttons />
       <Friends />
     </div>
@@ -91,7 +79,7 @@ function MainPage() {
 
 function Home() {
   return (
-    <div className="flex">
+    <div className="flex absolute z-0 sm:relative">
       <SideDrawer />
       <MainPage />
     </div>

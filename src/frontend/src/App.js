@@ -6,6 +6,7 @@ import MapPage from "./Components/MapPage";
 import Profile from "./Components/Profile";
 import LandingPage from "./Components/LandingPage";
 
+
 import {
   BrowserRouter as Router,
   Routes,
