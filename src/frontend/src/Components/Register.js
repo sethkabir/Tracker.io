@@ -4,7 +4,7 @@ import { Outlet } from "react-router-dom";
 // The image present in the left side
 function Image() {
   return (
-    <div className="flex flex-grow place-content-center h-full max-w-4xl bg-blue-200">
+    <div className="hidden sm:flex sm:flex-grow sm:place-content-center sm:h-full sm:max-w-5xl sm:bg-blue-200">
       <img alt="img" src={logo} />
     </div>
   );

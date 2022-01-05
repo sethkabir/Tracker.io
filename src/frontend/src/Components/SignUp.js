@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import React, { useState } from "react";
 import axios from "axios";
+import mapLogo from "../Images/p3.jpg";
 
 const SignUp = () => {
   axios.defaults.xsrfHeaderName = "X-CSRFTOKEN";
@@ -33,45 +34,50 @@ const SignUp = () => {
   }
 
   return (
-    <div className="flex flex-grow flex-col mx-2">
-      <div className="flex text-5xl mx-auto sm:mt-35 mt-20  italic">
+    <div className="flex flex-grow flex-col">
+      <img
+          className="bg-local absolute h-full object-cover sm:hidden opacity-70"
+          src={mapLogo}
+          alt="true"
+        />
+      <div className="flex text-5xl mx-auto sm:mt-35 mt-20  italic z-10">
         Tracker
       </div>
-      <div className="flex text-lg  mx-auto mt-5 mb-20">
+      <div className="flex text-lg  mx-auto mt-5 mb-20 z-10">
         Stay in touch with your friends on the go!
       </div>
-      <div className=" flex flex-col space-y-8 mb-10 sm:mx-36">
+      <div className=" flex flex-col space-y-8 mb-10 sm:mx-36 z-10 mx-2">
         <div className="text-blue-400">Sign In form</div>
         <input
-          className="block h-10 border border-gray-300 rounded-md focus:border-blue-500  outline-none tracking-widest"
+          className="block h-10 border border-gray-300 rounded-md focus:border-blue-500  outline-none tracking-widest p-2"
           value={firstName}
           onChange={(e) => setFirstName(e.target.value)}
           placeholder="First Name"
           type="text"
         />
         <input
-          className="block h-10 border border-gray-300 rounded-md focus:border-blue-500  outline-none tracking-widest"
+          className="block h-10 border border-gray-300 rounded-md focus:border-blue-500  outline-none tracking-widest p-2"
           value={lastName}
           onChange={(e) => setLastName(e.target.value)}
           placeholder="Last Name"
           type="text"
         />
         <input
-          className="block h-10 border border-gray-300 rounded-md focus:border-blue-500  outline-none tracking-widest"
+          className="block h-10 border border-gray-300 rounded-md focus:border-blue-500  outline-none tracking-widest p-2"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           placeholder="Password"
           type="password"
         />
         <input
-          className="block h-10 border border-gray-300 rounded-md focus:border-blue-500  outline-none tracking-widest"
+          className="block h-10 border border-gray-300 rounded-md focus:border-blue-500  outline-none tracking-widest p-2"
           value={username}
           onChange={(e) => setUsername(e.target.value)}
           placeholder="Account Username"
           type="text"
         />
         <input
-          className="block h-10 border border-gray-300 rounded-md focus:border-blue-500  outline-none tracking-widest"
+          className="block h-10 border border-gray-300 rounded-md focus:border-blue-500  outline-none tracking-widest p-2"
           value={emailId}
           onChange={(e) => setEmailId(e.target.value)}
           placeholder="Email Id"
