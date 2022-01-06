@@ -1,8 +1,11 @@
-from .models import User
-from .serializers import *
+from django.contrib.auth import authenticate, login
 
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
+
+from .models import User
+from .serializers import *
+
 
 
 @api_view(['GET'])
@@ -25,9 +28,13 @@ def signup(request):
 
 @api_view(['POST'])
 def login(request):
-    serializer = SignupSerializer(data=request.data)
-    if serializer.is_valid():
-        pass
+    username = request.data['username']
+    password = request.data['password']
+    user = authenticate(username=username, password=password)
+
+    if user is not None:
+        login(user)
     else:
-        print(request.data,serializer.errors)
-    return Response(serializer.errors)
+        print("Auth Error")
+        return Response({"Error": "Unable to authenticate"})
+    return Response({"Success": "Logged in"})

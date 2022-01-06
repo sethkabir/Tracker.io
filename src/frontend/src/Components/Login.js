@@ -4,6 +4,9 @@ import axios from "axios";
 import { useState } from "react";
 
 function Login() {
+  axios.defaults.xsrfHeaderName = "X-CSRFTOKEN";
+  axios.defaults.xsrfCookieName = "csrftoken";
+  
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 

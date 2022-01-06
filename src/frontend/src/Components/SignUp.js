@@ -26,7 +26,7 @@ const SignUp = () => {
     })
       .then((res) => {
         console.log(res.data);
-        navigate("/dashboard/home");
+        navigate("/auth/login");
       })
       .catch((error) => {
         console.log(error.response);
