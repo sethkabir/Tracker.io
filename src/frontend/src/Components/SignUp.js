@@ -47,7 +47,7 @@ const SignUp = () => {
         Stay in touch with your friends on the go!
       </div>
       <div className=" flex flex-col space-y-8 mb-10 sm:mx-36 z-10 mx-2">
-        <div className="text-blue-400">Sign In form</div>
+        <div className="text-blue-400">Registration form</div>
         <input
           className="block h-10 border border-gray-300 rounded-md focus:border-blue-500  outline-none tracking-widest p-2"
           value={first_name}
