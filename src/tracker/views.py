@@ -9,8 +9,8 @@ from rest_framework.response import Response
 def api_overview(request):
     '''Returns list of API endpoints'''
     api_urls = {
-        'signup': 'api/auth/signup/',
-        'login': 'api/auth/login'
+        'signup': 'api/auth/signup',
+        'login': 'api/auth/login',
     }
     return Response(api_urls)
 
