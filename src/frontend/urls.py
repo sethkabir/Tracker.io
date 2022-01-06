@@ -22,5 +22,5 @@ urlpatterns = [
     path('auth', index),
     path('auth/login', index),
     path('auth/signup', index),
-    re_path(r'^(?:.*)$/', index),  
+    re_path(r'^(?:.*)/?$', index),  
 ]

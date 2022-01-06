@@ -7,16 +7,16 @@ const SignUp = () => {
   axios.defaults.xsrfHeaderName = "X-CSRFTOKEN";
   axios.defaults.xsrfCookieName = "csrftoken";
 
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
+  const [first_name, setFirstName] = useState("");
+  const [last_name, setLastName] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [emailId, setEmailId] = useState("");
+  const [email, setEmail] = useState("");
 
   const navigate = useNavigate();
 
   async function signUp() {
-    let item = { firstName, lastName, username, password, emailId };
+    let item = { username, password, first_name, last_name, email };
     console.log(item);
 
     await axios({
@@ -36,10 +36,10 @@ const SignUp = () => {
   return (
     <div className="flex flex-grow flex-col">
       <img
-          className="bg-local absolute h-full object-cover sm:hidden opacity-70"
-          src={mapLogo}
-          alt="true"
-        />
+        className="bg-local absolute h-full object-cover sm:hidden opacity-70"
+        src={mapLogo}
+        alt="true"
+      />
       <div className="flex text-5xl mx-auto sm:mt-35 mt-20  italic z-10">
         Tracker
       </div>
@@ -50,14 +50,14 @@ const SignUp = () => {
         <div className="text-blue-400">Sign In form</div>
         <input
           className="block h-10 border border-gray-300 rounded-md focus:border-blue-500  outline-none tracking-widest p-2"
-          value={firstName}
+          value={first_name}
           onChange={(e) => setFirstName(e.target.value)}
           placeholder="First Name"
           type="text"
         />
         <input
           className="block h-10 border border-gray-300 rounded-md focus:border-blue-500  outline-none tracking-widest p-2"
-          value={lastName}
+          value={last_name}
           onChange={(e) => setLastName(e.target.value)}
           placeholder="Last Name"
           type="text"
@@ -78,8 +78,8 @@ const SignUp = () => {
         />
         <input
           className="block h-10 border border-gray-300 rounded-md focus:border-blue-500  outline-none tracking-widest p-2"
-          value={emailId}
-          onChange={(e) => setEmailId(e.target.value)}
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
           placeholder="Email Id"
           type="text"
         />
@@ -92,6 +92,6 @@ const SignUp = () => {
       </div>
     </div>
   );
-}
+};
 
 export default SignUp;

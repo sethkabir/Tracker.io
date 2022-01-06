@@ -20,5 +20,5 @@ from .views import *
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include('tracker.urls')),
-    re_path(r'^(?:.*)$/', include('frontend.urls')),
+    re_path(r'^(?:.*)/?$', include('frontend.urls')),
 ]
