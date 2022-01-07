@@ -1,4 +1,4 @@
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login as auth_login
 
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
@@ -33,8 +33,9 @@ def login(request):
     user = authenticate(username=username, password=password)
 
     if user is not None:
-        login(user)
+        auth_login(request, user)
+        print("user ID:", request.user.id)
     else:
         print("Auth Error")
         return Response({"Error": "Unable to authenticate"})
-    return Response({"Success": "Logged in"})
+    return Response()
