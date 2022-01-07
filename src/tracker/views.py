@@ -38,7 +38,7 @@ def login(request):
     else:
         print("Auth Error")
         return Response({"Error": "Unable to authenticate"})
-    return Response()
+    return Response(UserSerializer(request.user).data)
 
 @api_view(['POST'])
 def logout(request):
@@ -48,3 +48,8 @@ def logout(request):
         print("Unable to logout: Contact website management")
         return Response({"Error": "Unable to logout"})
     return Response()
+
+@api_view(['GET'])
+def user_details(request, pk):
+    serializer = UserSerializer(User.objects.get(id=pk))
+    return Response(serializer.data)
