@@ -1,4 +1,4 @@
-from django.contrib.auth import authenticate, login as auth_login
+from django.contrib.auth import authenticate, login as auth_login, logout as auth_logout
 
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
@@ -38,4 +38,13 @@ def login(request):
     else:
         print("Auth Error")
         return Response({"Error": "Unable to authenticate"})
+    return Response()
+
+@api_view(['POST'])
+def logout(request):
+    if request.user.is_authenticated:
+        auth_logout(request.user)
+    else:
+        print("Unable to logout: Contact website management")
+        return Response({"Error": "Unable to logout"})
     return Response()
