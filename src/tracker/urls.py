@@ -22,4 +22,5 @@ urlpatterns = [
     path('', api_overview),
     path('auth/signup', signup),
     path('auth/login', login),
+    path('auth/logout', logout),
 ]
