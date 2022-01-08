@@ -6,6 +6,7 @@ import {
   ExclamationCircleIcon,
   HomeIcon,
 } from "@heroicons/react/solid";
+import { LogoutIcon } from "@heroicons/react/outline";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
@@ -55,6 +56,14 @@ const Navbar = (props) => {
               <div className="group flex itme px-4 py-2 text-sm text-black hover:bg-blue-400 hover:text-white">
                 <UserCircleIcon className="mr-3 h-5 w-5 text-gray-400 group-hover:text-white" />
                 Change Profile
+              </div>
+            </Link>
+          </div>
+          <div className="py-1">
+            <Link to="/auth/login">
+              <div className="group flex itme px-4 py-2 text-sm text-black hover:bg-blue-400 hover:text-white">
+                <LogoutIcon className="mr-3 h-5 w-5 text-gray-400 group-hover:text-white" />
+                Logout
               </div>
             </Link>
           </div>

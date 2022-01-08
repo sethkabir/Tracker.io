@@ -23,7 +23,7 @@ function Login() {
     })
       .then((res) => {
         console.log(res);
-        // navigate("/dashboard/home");
+        navigate("/dashboard/home");
       })
       .catch((error) => {
         console.log(error.response);
