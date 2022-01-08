@@ -12,8 +12,10 @@ from .serializers import *
 def api_overview(request):
     '''Returns list of API endpoints'''
     api_urls = {
-        'signup': 'api/auth/signup',
-        'login': 'api/auth/login',
+        'signup': 'auth/signup',
+        'login': 'auth/login',
+        'logout': 'auth/logout',
+        'user-profile': 'user/<id>',
     }
     return Response(api_urls)
 
