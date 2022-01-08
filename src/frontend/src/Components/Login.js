@@ -3,7 +3,8 @@ import mapLogo from "../Images/p3.jpg";
 import axios from "axios";
 import { useState } from "react";
 
-function Login() {
+const Login = () => {
+
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
@@ -19,8 +20,8 @@ function Login() {
       data: item,
     })
       .then((res) => {
-        console.log(res.data);
-        navigate("/dashboard/home");
+        console.log(res);
+        // navigate("/dashboard/home");
       })
       .catch((error) => {
         console.log(error.response);
