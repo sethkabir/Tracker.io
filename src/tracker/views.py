@@ -12,8 +12,10 @@ from .serializers import *
 def api_overview(request):
     '''Returns list of API endpoints'''
     api_urls = {
-        'signup': 'api/auth/signup',
-        'login': 'api/auth/login',
+        'signup': 'auth/signup',
+        'login': 'auth/login',
+        'logout': 'auth/logout',
+        'user-profile': 'user/<id>',
     }
     return Response(api_urls)
 
@@ -55,6 +57,13 @@ def logout(request):
 
 @api_view(['GET'])
 def user_details(request, pk):
-    '''returns specific user details'''
+    '''Returns specific user details'''
     serializer = UserSerializer(User.objects.get(id=pk))
+    return Response(serializer.data)
+
+@api_view(['GET'])
+def current_user_details(request):
+    '''Returns specific user details'''
+    user = request.user
+    serializer = UserSerializer(user)
     return Response(serializer.data)
