@@ -6,7 +6,7 @@ import { useState } from "react";
 function Login() {
   axios.defaults.xsrfHeaderName = "X-CSRFTOKEN";
   axios.defaults.xsrfCookieName = "csrftoken";
-  
+
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
@@ -22,8 +22,12 @@ function Login() {
       data: item,
     })
       .then((res) => {
-        console.log(res);
-        // navigate("/dashboard/home");
+        let data = res.data.id;
+        if (data) {
+          navigate("/dashboard/home");
+        } else {
+          alert("Invalid Username or password!");
+        }
       })
       .catch((error) => {
         console.log(error.response);

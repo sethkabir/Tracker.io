@@ -26,11 +26,11 @@ function Profile() {
 }
 
 function UserInfo() {
-
+  
   const [profile, setProfile] = useState(null);
 
-  React.useEffect(() => {
-    axios.get("http://127.0.0.1:8080/api/user/1").then((response) => {
+  useEffect(() => {
+    axios.get("http://127.0.0.1:8080/api/user").then((response) => {
       setProfile(response.data);
     });
   }, []);

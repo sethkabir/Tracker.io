@@ -40,6 +40,7 @@ def login(request):
     else:
         print("Auth Error")
         return Response({"Error": "User_not_found"})
+    print(UserSerializer(request.user).data)
     return Response(UserSerializer(request.user).data)
 
 @api_view(['POST'])
