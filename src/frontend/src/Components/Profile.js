@@ -15,27 +15,27 @@ function UserInfo() {
     <div className="">
       <span className="mx-8 mb-2  flex flex-col place-content-start space-y-1">
         <div>Name</div>
-        <input type="text" className="rounded-lg h-9 bg-slate-700" />
+        <div className="rounded-lg h-9 bg-slate-700"></div>
       </span>
 
       <span className="mx-8 mb-2  flex flex-col place-content-start space-y-1">
         <div>Email</div>
-        <input type="text" className="rounded-lg h-9 bg-slate-700" />
+        <div className="rounded-lg h-9 bg-slate-700"></div>
       </span>
 
       <span className="mx-8 mb-2  flex flex-col place-content-start space-y-1">
         <div>Contact</div>
-        <input type="text" className="rounded-lg h-9 bg-slate-700" />
+        <div className="rounded-lg h-9 bg-slate-700"></div>
       </span>
 
       <span className="mx-8 mb-2  flex flex-col place-content-start space-y-1">
         <div>Address</div>
-        <input type="text" className="rounded-lg h-9 bg-slate-700" />
+        <div className="rounded-lg h-9 bg-slate-700"></div>
       </span>
 
       <span className="mx-8 mb-2  flex flex-col place-content-start space-y-1">
         <div>Status</div>
-        <input type="text" className="rounded-lg h-9 bg-slate-700" />
+        <div className="rounded-lg h-9 bg-slate-700"></div>
       </span>
     </div>
   );

@@ -22,7 +22,7 @@ function Login() {
       data: item,
     })
       .then((res) => {
-        console.log(res.data);
+        console.log(res);
         navigate("/dashboard/home");
       })
       .catch((error) => {
