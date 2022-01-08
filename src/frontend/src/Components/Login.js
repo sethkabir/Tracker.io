@@ -3,8 +3,10 @@ import mapLogo from "../Images/p3.jpg";
 import axios from "axios";
 import { useState } from "react";
 
-const Login = () => {
-
+function Login() {
+  axios.defaults.xsrfHeaderName = "X-CSRFTOKEN";
+  axios.defaults.xsrfCookieName = "csrftoken";
+  
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 

@@ -1,8 +1,11 @@
-from .models import User
-from .serializers import *
+from django.contrib.auth import authenticate, login as auth_login, logout as auth_logout
 
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
+
+from .models import User
+from .serializers import *
+
 
 
 @api_view(['GET'])
@@ -25,9 +28,28 @@ def signup(request):
 
 @api_view(['POST'])
 def login(request):
-    serializer = SignupSerializer(data=request.data)
-    if serializer.is_valid():
-        pass
+    username = request.data['username']
+    password = request.data['password']
+    user = authenticate(username=username, password=password)
+
+    if user is not None:
+        auth_login(request, user)
+        print("user ID:", request.user.id)
     else:
-        print(request.data,serializer.errors)
-    return Response(serializer.errors)
+        print("Auth Error")
+        return Response({"Error": "Unable to authenticate"})
+    return Response(UserSerializer(request.user).data)
+
+@api_view(['POST'])
+def logout(request):
+    if request.user.is_authenticated:
+        auth_logout(request.user)
+    else:
+        print("Unable to logout: Contact website management")
+        return Response({"Error": "Unable to logout"})
+    return Response()
+
+@api_view(['GET'])
+def user_details(request, pk):
+    serializer = UserSerializer(User.objects.get(id=pk))
+    return Response(serializer.data)
