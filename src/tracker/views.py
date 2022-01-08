@@ -19,6 +19,7 @@ def api_overview(request):
 
 @api_view(['POST'])
 def signup(request):
+    '''signup api'''
     serializer = SignupSerializer(data=request.data)
     if serializer.is_valid():
         serializer.save()
@@ -28,6 +29,7 @@ def signup(request):
 
 @api_view(['POST'])
 def login(request):
+    '''login api'''
     username = request.data['username']
     password = request.data['password']
     user = authenticate(username=username, password=password)
@@ -42,6 +44,7 @@ def login(request):
 
 @api_view(['POST'])
 def logout(request):
+    '''logout api'''
     if request.user.is_authenticated:
         auth_logout(request.user)
     else:
@@ -51,5 +54,6 @@ def logout(request):
 
 @api_view(['GET'])
 def user_details(request, pk):
+    '''returns specific user details'''
     serializer = UserSerializer(User.objects.get(id=pk))
     return Response(serializer.data)

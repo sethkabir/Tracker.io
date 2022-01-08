@@ -23,4 +23,5 @@ urlpatterns = [
     path('auth/signup', signup),
     path('auth/login', login),
     path('auth/logout', logout),
+    path("user/<int:pk>", user_details),
 ]
