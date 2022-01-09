@@ -1,14 +1,15 @@
 from django.contrib.auth import authenticate, login as auth_login, logout as auth_logout
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth import get_user_model
 
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 
-from .models import User
 from .serializers import *
 
+User = get_user_model()
 
-
-@api_view(['GET'])
+@api_view(['GET'])  
 def api_overview(request):
     '''Returns list of API endpoints'''
     api_urls = {
@@ -21,7 +22,7 @@ def api_overview(request):
 
 @api_view(['POST'])
 def signup(request):
-    '''signup api'''
+    '''Signup endpoint'''
     serializer = SignupSerializer(data=request.data)
     if serializer.is_valid():
         serializer.save()
@@ -31,7 +32,7 @@ def signup(request):
 
 @api_view(['POST'])
 def login(request):
-    '''login api'''
+    '''Login endpoint'''
     username = request.data['username']
     password = request.data['password']
     user = authenticate(username=username, password=password)
@@ -42,19 +43,16 @@ def login(request):
     else:
         print("Auth Error")
         return Response({"Error": "User_not_found"})
-    return Response(UserSerializer(request.user).data)
+    return Response({"Success": f"{request.user.username} logged in"})
 
 @api_view(['POST'])
 def logout(request):
-    '''logout api'''
-    if request.user.is_authenticated:
-        auth_logout(request.user)
-    else:
-        print("Unable to logout: Contact website management")
-        return Response({"Error": "Unable to logout"})
-    return Response()
+    '''Logout endpoint'''
+    auth_logout(request)
+    return Response({})
 
 @api_view(['GET'])
+# @login_required()
 def user_details(request, pk):
     '''Returns specific user details'''
     serializer = UserSerializer(User.objects.get(id=pk))
@@ -62,7 +60,7 @@ def user_details(request, pk):
 
 @api_view(['GET'])
 def current_user_details(request):
-    '''Returns specific user details'''
+    '''Returns current active user details'''
     user = request.user
     serializer = UserSerializer(user)
     return Response(serializer.data)
