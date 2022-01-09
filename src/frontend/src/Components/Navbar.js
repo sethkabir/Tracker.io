@@ -9,8 +9,30 @@ import {
 import { LogoutIcon } from "@heroicons/react/outline";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const Navbar = (props) => {
+  const navigate = useNavigate();
+
+  async function logout() {
+    let item = {};
+    console.log(item);
+
+    await axios({
+      method: "post",
+      url: "http://127.0.0.1:8080/api/auth/logout",
+      data: item,
+    })
+      .then((res) => {
+        console.log(res.data);
+        navigate("/auth/login");
+      })
+      .catch((error) => {
+        console.log(error.response);
+      });
+  }
+
   const [isOpen, setIsOpen] = useState(false);
 
   return (
@@ -60,12 +82,10 @@ const Navbar = (props) => {
             </Link>
           </div>
           <div className="py-1">
-            <Link to="/auth/login">
-              <div className="group flex itme px-4 py-2 text-sm text-black hover:bg-blue-400 hover:text-white">
-                <LogoutIcon className="mr-3 h-5 w-5 text-gray-400 group-hover:text-white" />
-                Logout
-              </div>
-            </Link>
+            <button onClick={logout} className="group flex itme px-4 py-2 text-sm text-black hover:bg-blue-400 hover:text-white">
+              <LogoutIcon className="mr-3 h-5 w-5 text-gray-400 group-hover:text-white" />
+              Logout
+            </button>
           </div>
         </div>
       )}

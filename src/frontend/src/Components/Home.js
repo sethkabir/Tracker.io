@@ -7,6 +7,7 @@ import {
 import Navbar from "./Navbar";
 import { Link } from "react-router-dom";
 
+
 function SideDrawer() {
   return (
     <div className="hidden sm:bg-blue-200 sm:grow sm:h-screen sm:block ">
@@ -26,6 +27,7 @@ function Statistics() {
 }
 
 function Buttons() {
+
   return (
     <div className="flex flex-col sm:flex-row h-full basis-1/3">
       <div className="grow grid grid-cols-2  md:max-w-md">

@@ -2,6 +2,7 @@ import ReactMapGL from "react-map-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
 import { useState } from "react";
 
+//this is to resolve the web error which happens due to mapbox integration when using npm run build!
 // added the following 6 lines.
 import mapboxgl from "mapbox-gl";
 
