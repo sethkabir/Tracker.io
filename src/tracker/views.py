@@ -1,5 +1,4 @@
 from django.contrib.auth import authenticate, login as auth_login, logout as auth_logout
-from django.contrib.auth.decorators import login_required
 from django.contrib.auth import get_user_model
 
 from rest_framework.decorators import api_view
@@ -52,7 +51,6 @@ def logout(request):
     return Response({})
 
 @api_view(['GET'])
-# @login_required()
 def user_details(request, pk):
     '''Returns specific user details'''
     serializer = UserSerializer(User.objects.get(id=pk))
