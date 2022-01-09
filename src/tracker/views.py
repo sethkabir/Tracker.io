@@ -42,7 +42,7 @@ def login(request):
     else:
         print("Auth Error")
         return Response({"Error": "User_not_found"})
-    return Response({"Success": f"{request.user.username} logged in"})
+    return Response(UserSerializer(request.user).data)
 
 @api_view(['POST'])
 def logout(request):
