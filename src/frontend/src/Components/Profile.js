@@ -14,7 +14,6 @@ function UserProfile() {
 }
 
 function Profile() {
-
   return (
     <div className="flex flex-col h-screen">
       <Navbar />
@@ -26,11 +25,10 @@ function Profile() {
 }
 
 function UserInfo() {
-
   const [profile, setProfile] = useState(null);
 
-  React.useEffect(() => {
-    axios.get("http://127.0.0.1:8080/api/user/1").then((response) => {
+  useEffect(() => {
+    axios.get("http://127.0.0.1:8080/api/user").then((response) => {
       setProfile(response.data);
     });
   }, []);
@@ -41,33 +39,45 @@ function UserInfo() {
     <div className="">
       <span className="mx-8 mb-2 p-2 flex flex-col place-content-start space-y-1">
         <div>Username</div>
-        <div className="rounded-lg h-9 bg-slate-700 text-white">{profile.username}</div>
+        <div className="rounded-lg h-9 bg-slate-700 text-white p-1">
+          {profile.username}
+        </div>
       </span>
 
       <span className="mx-8 mb-2 p-2 flex flex-col place-content-start space-y-1">
         <div>Name</div>
-        <div className="rounded-lg h-9 bg-slate-700 text-white">{profile.first_name} </div>
+        <div className="rounded-lg h-9 bg-slate-700 text-white p-1">
+          {profile.first_name}{" "}
+        </div>
       </span>
 
       <span className="mx-8 mb-2 p-2 flex flex-col place-content-start space-y-1">
         <div>Email</div>
-        <div className="rounded-lg h-9 bg-slate-700 text-white">{profile.email}</div>
+        <div className="rounded-lg h-9 bg-slate-700 text-white p-1">
+          {profile.email}
+        </div>
       </span>
 
-      <span className="mx-8 mb-2 p-2 flex flex-col place-content-start space-y-1">
+      <div className="mx-8 mb-2 p-2 flex flex-col place-content-start space-y-1">
         <div>Contact</div>
-        <div className="rounded-lg h-9 bg-slate-700 text-white">9872342395</div>
-      </span>
+        <div className="rounded-lg h-9 bg-slate-700 text-white p-1">
+          9872342395
+        </div>
+      </div>
 
-      <span className="mx-8 mb-2 p-2 flex flex-col place-content-start space-y-1">
+      <div className="mx-8 mb-2 p-2 flex flex-col place-content-start space-y-1">
         <div>Address</div>
-        <div className="rounded-lg h-9 bg-slate-700 text-white">#B-68 Anardana Chowk, Patiala, Punjab</div>
-      </span>
+        <div className="rounded-lg h-9 bg-slate-700 text-white p-1">
+          #B-68 Anardana Chowk, Patiala, Punjab
+        </div>
+      </div>
 
-      <span className="mx-8 mb-2 p-2 flex flex-col place-content-start space-y-1">
+      <div className="mx-8 mb-2 p-2 flex flex-col content-center space-y-1">
         <div>Status</div>
-        <div className="rounded-lg h-9 bg-slate-700 text-white">Available</div>
-      </span>
+        <div className="rounded-lg h-9 bg-slate-700 text-white p-1">
+          <div>Available</div>
+        </div>
+      </div>
     </div>
   );
 }
@@ -79,7 +89,5 @@ function ChangePassword() {
     </div>
   );
 }
-
-
 
 export default Profile;

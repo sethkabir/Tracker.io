@@ -6,7 +6,6 @@ import MapPage from "./Components/MapPage";
 import Profile from "./Components/Profile";
 import LandingPage from "./Components/LandingPage";
 
-
 import {
   BrowserRouter as Router,
   Routes,
@@ -28,8 +27,8 @@ const App = () => {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<LandingPage/>} />
-        
+        {/* <Route path="/" element={<LandingPage/>} /> */}
+        <Route exact path="/" element={<Navigate replace to="/auth/login"/>} />
         <Route exact path="/auth" element={<Navigate replace to="/auth/login"/>} />
         <Route exact path="/auth" element={<Register />}>
           <Route path="login" element={<Login />} />
