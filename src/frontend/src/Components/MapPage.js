@@ -1,29 +1,39 @@
 import Navbar from './Navbar';
-import mapLogo from '../Images/map.jpg';
+import MapComponent from './MapComponent';
+
 
 function TextButtons() {
-  return (
-    <div className="m-1 p-1 z-20 flex place-content-center">
-      <div className="flex overflow-x-scroll space-x-5 px-5 w-96 max-w-xl grow">
-        <div className="flex-shrink-0 rounded-xl h-24 w-24 bg-green-500">02</div>
-        <div className="flex-shrink-0 rounded-xl h-24 w-24 bg-green-500">03</div>
-        <div className="flex-shrink-0 rounded-xl h-24 w-24 bg-green-500">04</div>
-        <div className="flex-shrink-0 rounded-xl h-24 w-24 bg-green-500">05</div>
-        <div className="flex-shrink-0 rounded-xl h-24 w-24 bg-green-500">06</div>
-        <div className="flex-shrink-0 rounded-xl h-24 w-24 bg-green-500">07</div>
+  return ( 
+    <div className="m-1 p-1 flex place-content-center z-10">
+      <div className="flex overflow-x-scroll space-x-5 px-5 w-96 max-w-xl grow ">
+        <div className="flex-shrink-0 rounded-xl h-24 w-24 bg-green-500 p-9">02</div>
+        <div className="flex-shrink-0 rounded-xl h-24 w-24 bg-green-500 p-9">03</div>
+        <div className="flex-shrink-0 rounded-xl h-24 w-24 bg-green-500 p-9">04</div>
+        <div className="flex-shrink-0 rounded-xl h-24 w-24 bg-green-500 p-9">05</div>
+        <div className="flex-shrink-0 rounded-xl h-24 w-24 bg-green-500 p-9">06</div>
+        <div className="flex-shrink-0 rounded-xl h-24 w-24 bg-green-500 p-9">07</div>
       </div>
     </div>
   );
 }
 
+// function EmergencyButtons() {
+//   return (
+//     <div className="m-1 p-1 h-full flex items-center bg-black ">
+//       <div className="grid grid-cols-1 gap-5">
+//         <div className="rounded-full bg-green-500 h-12 w-12">08</div>
+//         <div className="rounded-full bg-green-500 h-12 w-12">09</div>
+//         <div className="rounded-full bg-green-500 h-12 w-12">10</div>
+//       </div>
+//     </div>
+//   );
+// }
 function EmergencyButtons() {
   return (
-    <div className="m-1 p-1 h-full flex items-center z-10">
-      <div className="grid grid-cols-1 gap-5">
-        <div className="rounded-full bg-green-500 h-12 w-12">08</div>
-        <div className="rounded-full bg-green-500 h-12 w-12">09</div>
-        <div className="rounded-full bg-green-500 h-12 w-12">10</div>
-      </div>
+    <div className="m-2 flex flex-col space-y-3 w-14 z-10 h-full place-content-center">
+        <div className="rounded-full bg-red-500 h-12 w-12 p-3">08</div>
+        <div className="rounded-full bg-yellow-500 h-12 w-12 p-3">09</div>
+        <div className="rounded-full bg-green-500 h-12 w-12 p-3">10</div>
     </div>
   );
 }
@@ -32,9 +42,6 @@ function EmergencyButtons() {
 //   return <div className="flex bg-blue-300 absolute h-full w-screen"><img className='object-fill' src={mapLogo} alt="true"/></div>;
 // }
 
-function MapComponent() {
-  return <img className='flex bg-blue-300 absolute h-full w-screen object-cover' src={mapLogo} alt="true"/>;
-}
 
 function MapPage() {
   return (
