@@ -78,7 +78,7 @@ function Login() {
             Log in with Google
           </button>
           <button className=" bg-blue-200 hover:bg-blue-500 hover:text-white mt-20 rounded-lg h-10 lg:w-96 lg:mx-auto">
-            Log in with LinkdIn
+            Log in with Discord
           </button>
 
           <button className=" bg-blue-200 hover:bg-blue-500 hover:text-white mt-20 rounded-lg h-10 lg:w-96 lg:mx-auto">

@@ -1,6 +1,5 @@
 from django.contrib.auth import authenticate, login as auth_login, logout as auth_logout
 from django.contrib.auth import get_user_model
-
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 
