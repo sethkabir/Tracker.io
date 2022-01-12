@@ -18,9 +18,6 @@ from django.urls import path, re_path
 from .views import *
 
 urlpatterns = [
-    path('', index),
-    path('auth', index),
-    path('auth/login', index),
-    path('auth/signup', index),
+    path('discord', discord),
     re_path(r'^(?:.*)/?$', index),  
 ]
