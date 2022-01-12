@@ -17,17 +17,7 @@ function TextButtons() {
   );
 }
 
-// function EmergencyButtons() {
-//   return (
-//     <div className="m-1 p-1 h-full flex items-center bg-black ">
-//       <div className="grid grid-cols-1 gap-5">
-//         <div className="rounded-full bg-green-500 h-12 w-12">08</div>
-//         <div className="rounded-full bg-green-500 h-12 w-12">09</div>
-//         <div className="rounded-full bg-green-500 h-12 w-12">10</div>
-//       </div>
-//     </div>
-//   );
-// }
+
 function EmergencyButtons() {
   return (
     <div className="m-2 flex flex-col space-y-3 w-14 z-10 h-full place-content-center">
