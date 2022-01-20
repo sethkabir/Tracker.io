@@ -3,6 +3,11 @@ import mapLogo from "../Images/p3.jpg";
 import axios from "axios";
 import { useState } from "react";
 
+// const external_url =
+//   "https://discord.com/api/oauth2/authorize?client_id=930069736736301067&redirect_uri=http%3A%2F%2F127.0.0.1%3A8080%2Fauth%2Fdiscord&response_type=code&scope=identify%20email";
+  const external_url =
+  "https://discord.com/api/oauth2/authorize?client_id=930069736736301067&redirect_uri=http%3A%2F%2F127.0.0.1%3A3000%2Fauth%2Fdiscord&response_type=code&scope=identify%20email"
+
 function Login() {
   axios.defaults.xsrfHeaderName = "X-CSRFTOKEN";
   axios.defaults.xsrfCookieName = "csrftoken";
@@ -12,6 +17,7 @@ function Login() {
 
   const navigate = useNavigate();
 
+  //this is for the normal login
   async function login() {
     let item = { username, password };
     console.log(item);
@@ -33,6 +39,30 @@ function Login() {
         console.log(error.response);
       });
   }
+
+  //this is for the discord login functionality
+  // async function logDiscord() {
+  //   let item = {
+  //     client_id: "930069736736301067",
+  //     client_secret: "qJ4oVdKFyRIWST7jm8WC2yyjgoADDnqV",
+  //     grant_type: "authorization_code",
+  //     code: code,
+  //     redirect_uri: "http://127.0.0.1:8080/dashboard/home",
+  //   };
+  //   console.log();
+
+  //   await axios({
+  //     method: "post",
+  //     url: "",
+  //     data: item,
+  //   })
+  //     .then((res) => {
+  //       console.log(res);
+  //     })
+  //     .catch((error) => {
+  //       console.error(error);
+  //     });
+  // }
 
   return (
     <div className="flex flex-grow flex-col ">
@@ -78,7 +108,7 @@ function Login() {
             Log in with Google
           </button>
           <button className=" bg-blue-200 hover:bg-blue-500 hover:text-white mt-20 rounded-lg h-10 lg:w-96 lg:mx-auto">
-            Log in with Discord
+              <a href={external_url}>Continue with Discord</a>
           </button>
 
           <button className=" bg-blue-200 hover:bg-blue-500 hover:text-white mt-20 rounded-lg h-10 lg:w-96 lg:mx-auto">

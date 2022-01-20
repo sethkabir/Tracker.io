@@ -5,6 +5,7 @@ import Home from "./Components/Home";
 import MapPage from "./Components/MapPage";
 import Profile from "./Components/Profile";
 import LandingPage from "./Components/LandingPage";
+import Loading from "./Components/Loading";
 
 import {
   BrowserRouter as Router,
@@ -29,6 +30,7 @@ const App = () => {
       <Routes>
         {/* <Route path="/" element={<LandingPage/>} /> */}
         <Route exact path="/" element={<Navigate replace to="/auth/login"/>} />
+        <Route exact path="/auth/discord" element={<Loading/>} />
         <Route exact path="/auth" element={<Navigate replace to="/auth/login"/>} />
         <Route exact path="/auth" element={<Register />}>
           <Route path="login" element={<Login />} />
