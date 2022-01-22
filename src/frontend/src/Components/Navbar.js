@@ -15,6 +15,7 @@ import { useNavigate } from "react-router-dom";
 const Navbar = (props) => {
   const navigate = useNavigate();
 
+  //POST request (logout)
   async function logout() {
     let item = {};
     console.log(item);
@@ -33,6 +34,7 @@ const Navbar = (props) => {
       });
   }
 
+  //state for when the dropdown menu is open/closed
   const [isOpen, setIsOpen] = useState(false);
 
   return (
@@ -42,6 +44,7 @@ const Navbar = (props) => {
         <MenuIcon className="h-8 w-8" />
       </button>
 
+      {/* dropdown functionality */}
       {isOpen && (
         <div className="origin-top-right absolute right-0 mt-10 w-56 rounded-md shadow-lg bg-gray-100 ring-1 ring-black ring-opacity-5 divide-y divide-gray-300 focus:outline-none">
           <div className="py-1">
@@ -86,6 +89,12 @@ const Navbar = (props) => {
               <LogoutIcon className="mr-3 h-5 w-5 text-gray-400 group-hover:text-white" />
               Logout
             </button>
+          </div>
+          <div className="py-1">
+            <div className="group flex itme px-4 py-2 text-sm text-black hover:bg-blue-400 hover:text-white">
+              <LogoutIcon onClick={logout} className="mr-3 h-5 w-5 text-gray-400 group-hover:text-white" />
+              Logout
+            </div>
           </div>
         </div>
       )}

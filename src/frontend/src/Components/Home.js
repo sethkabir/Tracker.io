@@ -7,16 +7,15 @@ import {
 import Navbar from "./Navbar";
 import { Link } from "react-router-dom";
 
-
-function SideDrawer() {
+const SideDrawer = () => {
   return (
     <div className="hidden sm:bg-blue-200 sm:grow sm:h-screen sm:block ">
       Side Drawer
     </div>
   );
-}
+};
 
-function Statistics() {
+const Statistics = () => {
   return (
     <div className="grow grid grid-cols-1">
       <div className="bg-blue-300 rounded-2xl m-5 h-80 sm:h-auto p-5">
@@ -24,10 +23,9 @@ function Statistics() {
       </div>
     </div>
   );
-}
+};
 
-function Buttons() {
-
+const Buttons = () => {
   return (
     <div className="flex flex-col sm:flex-row h-full basis-1/3">
       <div className="grow grid grid-cols-2  md:max-w-md">
@@ -55,9 +53,9 @@ function Buttons() {
       <Statistics />
     </div>
   );
-}
+};
 
-function Friends() {
+const Friends = () => {
   return (
     <div className="flex flex-col sm:flex-row h-full ">
       <div className="grow grid grid-cols-1">
@@ -67,9 +65,9 @@ function Friends() {
       </div>
     </div>
   );
-}
+};
 
-function MainPage() {
+const MainPage = () => {
   return (
     <div className="grow basis-5/6 flex flex-col sm:h-screen overflow-auto ">
       <Navbar />
@@ -77,15 +75,16 @@ function MainPage() {
       <Friends />
     </div>
   );
-}
+};
 
-function Home() {
+//renders the sidedrawer + mainpage
+const Home = () => {
   return (
     <div className="flex absolute z-0 sm:relative">
       <SideDrawer />
       <MainPage />
     </div>
   );
-}
+};
 
 export default Home;

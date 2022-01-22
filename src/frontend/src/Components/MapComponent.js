@@ -12,7 +12,7 @@ import mapboxgl from "mapbox-gl";
 // eslint-disable-next-line import/no-webpack-loader-syntax, import/no-unresolved
 mapboxgl.workerClass = require("worker-loader!mapbox-gl/dist/mapbox-gl-csp-worker").default;
 
-function MapComponent() {
+const MapComponent = () => {
   const [viewport, setViewport] = useState({
     width: "100%",
     height: "100%",

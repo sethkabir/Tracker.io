@@ -1,8 +1,7 @@
 import Navbar from './Navbar';
 import MapComponent from './MapComponent';
 
-
-function TextButtons() {
+const TextButtons = () => {
   return ( 
     <div className="m-1 p-1 flex place-content-center z-10">
       <div className="flex overflow-x-scroll space-x-5 px-5 w-96 max-w-xl grow ">
@@ -18,7 +17,7 @@ function TextButtons() {
 }
 
 
-function EmergencyButtons() {
+const EmergencyButtons = () => {
   return (
     <div className="m-2 flex flex-col space-y-3 w-14 z-10 h-full place-content-center">
         <div className="rounded-full bg-red-500 h-12 w-12 p-3">08</div>
@@ -28,12 +27,12 @@ function EmergencyButtons() {
   );
 }
 
-// function MapComponent() {
+// const MapComponent = () => {
 //   return <div className="flex bg-blue-300 absolute h-full w-screen"><img className='object-fill' src={mapLogo} alt="true"/></div>;
 // }
 
 
-function MapPage() {
+const MapPage = () => {
   return (
     <div className="flex flex-col h-screen">
       <Navbar/>

@@ -2,7 +2,7 @@ import logo from "../Images/p3.jpg";
 import { Outlet } from "react-router-dom";
 
 // The image present in the left side
-function Image() {
+const Image = () => {
   return (
     <div className="hidden sm:flex sm:flex-grow sm:place-content-center sm:h-full sm:max-w-5xl sm:bg-blue-200">
       <img alt="img" src={logo} />
@@ -11,7 +11,7 @@ function Image() {
 }
 
 //Actual exported component
-function Register() {
+const Register = () => {
   return (
     <div className="flex flex-col lg:flex-row sm:place-content-evenly h-screen">
       <Image />

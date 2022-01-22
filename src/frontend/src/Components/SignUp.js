@@ -4,6 +4,7 @@ import axios from "axios";
 import mapLogo from "../Images/p3.jpg";
 
 const SignUp = () => {
+  //resolves the csrf token issue!
   axios.defaults.xsrfHeaderName = "X-CSRFTOKEN";
   axios.defaults.xsrfCookieName = "csrftoken";
 
@@ -15,6 +16,7 @@ const SignUp = () => {
 
   const navigate = useNavigate();
 
+  //POST request (manual signup)
   async function signUp() {
     let item = { username, password, first_name, last_name, email };
     console.log(item);

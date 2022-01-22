@@ -3,12 +3,14 @@ import mapLogo from "../Images/p3.jpg";
 import axios from "axios";
 import { useState } from "react";
 
+//redirect url to discord authentication
 // const external_url =
 //   "https://discord.com/api/oauth2/authorize?client_id=930069736736301067&redirect_uri=http%3A%2F%2F127.0.0.1%3A8080%2Fauth%2Fdiscord&response_type=code&scope=identify%20email";
-  const external_url =
-  "https://discord.com/api/oauth2/authorize?client_id=930069736736301067&redirect_uri=http%3A%2F%2F127.0.0.1%3A3000%2Fauth%2Fdiscord&response_type=code&scope=identify%20email"
+const external_url =
+  "https://discord.com/api/oauth2/authorize?client_id=930069736736301067&redirect_uri=http%3A%2F%2F127.0.0.1%3A3000%2Fauth%2Fdiscord&response_type=code&scope=identify%20email";
 
-function Login() {
+const Login = () => {
+  //resolves the csrf token issue!
   axios.defaults.xsrfHeaderName = "X-CSRFTOKEN";
   axios.defaults.xsrfCookieName = "csrftoken";
 
@@ -17,7 +19,7 @@ function Login() {
 
   const navigate = useNavigate();
 
-  //this is for the normal login
+  //POST request (manual login)
   async function login() {
     let item = { username, password };
     console.log(item);
@@ -108,7 +110,7 @@ function Login() {
             Log in with Google
           </button>
           <button className=" bg-blue-200 hover:bg-blue-500 hover:text-white mt-20 rounded-lg h-10 lg:w-96 lg:mx-auto">
-              <a href={external_url}>Continue with Discord</a>
+            <a href={external_url}>Continue with Discord</a>
           </button>
 
           <button className=" bg-blue-200 hover:bg-blue-500 hover:text-white mt-20 rounded-lg h-10 lg:w-96 lg:mx-auto">
@@ -120,6 +122,6 @@ function Login() {
       </div>
     </div>
   );
-}
+};
 
 export default Login;

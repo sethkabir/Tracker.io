@@ -1,7 +1,7 @@
 import { Link} from "react-router-dom";
 import bird from '../Images/bird.png'
 
-function LandingPage() {
+const LandingPage = () => {
   return (
     <div>
       "hello everynyan, how are you? fine thank you!, oh mai gah!, i wish i were
