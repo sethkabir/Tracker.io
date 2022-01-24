@@ -7,6 +7,7 @@ import Profile from "./Components/Profile";
 import LandingPage from "./Components/LandingPage";
 import Loading from "./Components/Loading";
 import Test from "./Components/Test";
+import ChangePassword from "./Components/ChangePassword";
 import {
   BrowserRouter as Router,
   Routes,
@@ -41,6 +42,7 @@ const App = () => {
           <Route path="login" element={<Login />} />
           <Route path="signup" element={<SignUp />} />
         </Route>
+        <Route path="/auth/change-password" element={<ChangePassword/>} />
 
         {/* !!!test page to test frontend changes!!! */}
         <Route exact path="/test" element={<Test />} />

@@ -14,5 +14,6 @@ MapPage.js
 Profile.js
     |---Navbar.js
     |---UserProfilePic.js
+    |---ChangePassword.js
 Test.js
 ``` 

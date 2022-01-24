@@ -2,7 +2,8 @@ import axios from "axios";
 import React from "react";
 import Navbar from "./Navbar";
 import { useState, useEffect } from "react";
-import { UserProfilePic } from "./UserProfilePic";
+import UserProfilePic from "./UserProfilePic";
+import { Link } from "react-router-dom";
 
 const UserInfo = () => {
   const [profile, setProfile] = useState(null);
@@ -60,16 +61,19 @@ const UserInfo = () => {
       </div>
     </div>
   );
-}
+};
 
 const ChangePassword = () => {
   return (
-    <div className=" flex place-content-end">
-      <button className="rounded-lg mr-8 bg-blue-600 p-1 text-white">Change Password</button>
+    <div>
+      <div className=" flex place-content-end">
+        <button className="rounded-lg mr-8 bg-blue-600 p-1 text-white">
+          <Link to="/auth/change-password">Change Password</Link>
+        </button>
+      </div>
     </div>
   );
-}
-
+};
 
 const Profile = () => {
   return (
@@ -80,6 +84,6 @@ const Profile = () => {
       <ChangePassword />
     </div>
   );
-}
+};
 
 export default Profile;
