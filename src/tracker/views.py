@@ -1,9 +1,10 @@
 from django.contrib.auth import authenticate, login as auth_login, logout as auth_logout
 from django.contrib.auth import get_user_model
-from django.shortcuts import redirect, render
 
-from rest_framework.decorators import api_view
+from rest_framework import status
+from rest_framework.decorators import api_view, permission_classes
 from rest_framework.response import Response
+from rest_framework.permissions import IsAuthenticated, IsAdminUser
 
 from .serializers import *
 
@@ -16,6 +17,8 @@ def api_overview(request):
         'signup': 'auth/signup',
         'login': 'auth/login',
         'logout': 'auth/logout',
+        'change-password': 'auth/change-password',
+        'current-user-profile': 'user',
         'user-profile': 'user/<id>',
     }
     return Response(api_urls)
@@ -26,9 +29,9 @@ def signup(request):
     serializer = SignupSerializer(data=request.data)
     if serializer.is_valid():
         serializer.save()
-    else:
-        print(request.data,serializer.errors)
-    return Response(serializer.errors)
+        return Response({'success': 'user registered'}, status=status.HTTP_201_CREATED)
+
+    return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 @api_view(['POST'])
 def login(request):
@@ -39,27 +42,29 @@ def login(request):
 
     if user is not None:
         auth_login(request, user)
-        print("user ID:", request.user.id)
-    else:
-        print("Auth Error")
-        return Response({"Error": "User_not_found"})
-    return Response(UserSerializer(request.user).data)
+        return Response(UserSerializer(request.user).data, status=status.HTTP_202_ACCEPTED)
+    
+    return Response({"Error": "User_not_found"}, status=status.HTTP_400_BAD_REQUEST)
 
 @api_view(['POST'])
+@permission_classes([IsAuthenticated])
 def logout(request):
     '''Logout endpoint'''
     auth_logout(request)
-    return Response({})
+    return Response({"success": "user logged out"}, status=status.HTTP_200_OK)
 
 @api_view(['GET'])
+@permission_classes([IsAuthenticated])
 def user_details(request, pk):
     '''Returns specific user details'''
     serializer = UserSerializer(User.objects.get(id=pk))
-    return Response(serializer.data)
+    return Response(serializer.data, status=status.HTTP_200_OK)
 
 @api_view(['GET'])
+@permission_classes([IsAuthenticated, IsAdminUser])
 def current_user_details(request):
     '''Returns current active user details'''
     user = request.user
     serializer = UserSerializer(user)
-    return Response(serializer.data)
+    return Response(serializer.data, status=status.HTTP_200_OK)
+
