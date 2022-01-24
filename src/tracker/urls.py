@@ -23,6 +23,7 @@ urlpatterns = [
     path('auth/signup', signup),
     path('auth/login', login),
     path('auth/logout', logout),
+    path("auth/change-password", change_password),
     path("user", current_user_details),
     path("user/<int:pk>", user_details),
 ]

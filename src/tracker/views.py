@@ -1,5 +1,6 @@
 from django.contrib.auth import authenticate, login as auth_login, logout as auth_logout
 from django.contrib.auth import get_user_model
+from matplotlib.style import context
 
 from rest_framework import status
 from rest_framework.decorators import api_view, permission_classes
@@ -54,17 +55,27 @@ def logout(request):
     return Response({"success": "user logged out"}, status=status.HTTP_200_OK)
 
 @api_view(['GET'])
-@permission_classes([IsAuthenticated])
+@permission_classes([IsAuthenticated, IsAdminUser])
 def user_details(request, pk):
     '''Returns specific user details'''
-    serializer = UserSerializer(User.objects.get(id=pk))
+    serializer = UserSerializer(User.objects.get(id=pk), context={'request': request})
     return Response(serializer.data, status=status.HTTP_200_OK)
 
 @api_view(['GET'])
-@permission_classes([IsAuthenticated, IsAdminUser])
+@permission_classes([IsAuthenticated])
 def current_user_details(request):
     '''Returns current active user details'''
     user = request.user
     serializer = UserSerializer(user)
     return Response(serializer.data, status=status.HTTP_200_OK)
 
+@api_view(['PUT'])
+@permission_classes([IsAuthenticated])
+def change_password(request):
+    '''Changes current active user password'''
+    serializer = ChangePasswordSerializer(data=request.data, context={'request': request})
+    if serializer.is_valid():
+        serializer.save()
+        return Response({'success': 'password changed'}, status=status.HTTP_201_CREATED)
+    else:
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
