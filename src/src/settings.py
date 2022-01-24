@@ -59,7 +59,7 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
-            os.path.join(BASE_DIR,'frontend/build')
+            os.path.join(BASE_DIR,'frontend/dist')
         ],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -123,7 +123,31 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
-STATIC_URL = '/static/'
+
+# These are the settings you should have for everything to work properly.
+# Add these to your main settings.py file, or modify it accordingly.
+
+# Needed for production. Avoid using '*'.
+ALLOWED_HOSTS = ['127.0.0.1']
+
+# Needed for 'debug' to be available inside templates.
+# https://docs.djangoproject.com/en/3.2/ref/templates/api/#django-template-context-processors-debug
+INTERNAL_IPS = ['127.0.0.1']
+
+# Vite App Dir: point it to the folder your vite app is in.
+VITE_APP_DIR = BASE_DIR / "frontend"
+
+# Static files (CSS, JavaScript, Images)
+# https://docs.djangoproject.com/en/3.1/howto/static-files/
+
+# You may change these, but it's important that the dist folder is includedself.
+# If it's not, collectstatic won't copy your bundle to production.
+
+STATIC_URL = "/static/"
+STATICFILES_DIRS = [
+    VITE_APP_DIR / "dist",
+]
+STATIC_ROOT = BASE_DIR / "staticfiles"
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
@@ -131,5 +155,5 @@ STATIC_URL = '/static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'frontend/build/static')
+    os.path.join(BASE_DIR, 'frontend/dist/assets')
 ]
