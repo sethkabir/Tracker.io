@@ -1,12 +1,7 @@
 module.exports = {
-  mode: "jit",
-  content: ["./src/**/*.{js,jsx}"],
+  content: ["./index.html", "./src/**/*.{vue,js,ts,jsx,tsx}"],
   theme: {
-    extend: {
-      colors: {
-        'primary': '#1a1819',
-      }
-    },
+    extend: {},
   },
   plugins: [],
 };

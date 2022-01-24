@@ -1,9 +1,3 @@
-node_modules
-.DS_Store
-dist
-dist-ssr
-*.local
-
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
 # dependencies
