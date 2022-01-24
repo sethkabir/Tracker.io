@@ -1,30 +1,8 @@
-import { UserCircleIcon, PlusCircleIcon } from "@heroicons/react/solid";
 import axios from "axios";
 import React from "react";
 import Navbar from "./Navbar";
 import { useState, useEffect } from "react";
-
-const UserProfile = () => {
-  return (
-    //  {/* <!-- this is the profile pic template replace div with img tag --> */}
-    <div className="flex">
-      <UserCircleIcon className="h-44 w-44 " />
-      <PlusCircleIcon className="absolute h-10 w-10 place-self-end ml-36 ">
-      </PlusCircleIcon>
-    </div>
-  );
-}
-
-const Profile = () => {
-  return (
-    <div className="flex flex-col h-screen">
-      <Navbar />
-      <UserProfile />
-      <UserInfo />
-      <ChangePassword />
-    </div>
-  );
-}
+import { UserProfilePic } from "./UserProfilePic";
 
 const UserInfo = () => {
   const [profile, setProfile] = useState(null);
@@ -88,6 +66,18 @@ const ChangePassword = () => {
   return (
     <div className=" flex place-content-end">
       <button className="rounded-lg mr-8 bg-blue-600 p-1 text-white">Change Password</button>
+    </div>
+  );
+}
+
+
+const Profile = () => {
+  return (
+    <div className="flex flex-col h-screen">
+      <Navbar />
+      <UserProfilePic />
+      <UserInfo />
+      <ChangePassword />
     </div>
   );
 }

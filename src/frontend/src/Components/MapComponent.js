@@ -1,18 +1,22 @@
 import ReactMapGL from "react-map-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 //this is to resolve the web error which happens due to mapbox integration when using npm run build!
 // added the following 6 lines.
 import mapboxgl from "mapbox-gl";
-
 // The following is required to stop "npm build" from transpiling mapbox code.
 // notice the exclamation point in the import.
 // @ts-ignore
 // eslint-disable-next-line import/no-webpack-loader-syntax, import/no-unresolved
 mapboxgl.workerClass = require("worker-loader!mapbox-gl/dist/mapbox-gl-csp-worker").default;
 
+
 const MapComponent = () => {
+  
+  //the following code obtains the current location for the user at regular intervals of time and updates them
+
+  //mapbox documentation!
   const [viewport, setViewport] = useState({
     width: "100%",
     height: "100%",
