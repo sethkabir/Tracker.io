@@ -5,12 +5,12 @@ const TextButtons = () => {
   return ( 
     <div className="m-1 p-1 flex place-content-center z-10">
       <div className="flex overflow-x-scroll space-x-5 px-5 w-96 max-w-xl grow ">
-        <div className="flex-shrink-0 rounded-xl h-24 w-24 bg-green-500 p-9">02</div>
-        <div className="flex-shrink-0 rounded-xl h-24 w-24 bg-green-500 p-9">03</div>
-        <div className="flex-shrink-0 rounded-xl h-24 w-24 bg-green-500 p-9">04</div>
-        <div className="flex-shrink-0 rounded-xl h-24 w-24 bg-green-500 p-9">05</div>
-        <div className="flex-shrink-0 rounded-xl h-24 w-24 bg-green-500 p-9">06</div>
-        <div className="flex-shrink-0 rounded-xl h-24 w-24 bg-green-500 p-9">07</div>
+        <div className="flex-shrink-0 rounded-3xl h-24 w-24 bg-green-500 p-9">Hello</div>
+        <div className="flex-shrink-0 rounded-3xl h-24 w-24 bg-green-500 p-9">Start</div>
+        <div className="flex-shrink-0 rounded-3xl h-24 w-24 bg-blue-500 p-9">Faster</div>
+        <div className="flex-shrink-0 rounded-3xl h-24 w-24 bg-red-500 p-9">Slower</div>
+        <div className="flex-shrink-0 rounded-3xl h-24 w-24 bg-red-500 p-9">Stop</div>
+        <div className="flex-shrink-0 rounded-3xl h-24 w-24 bg-yellow-500 p-9">Follow me</div>
       </div>
     </div>
   );
@@ -20,9 +20,9 @@ const TextButtons = () => {
 const EmergencyButtons = () => {
   return (
     <div className="m-2 flex flex-col space-y-3 w-14 z-10 h-full place-content-center">
-        <div className="rounded-full bg-red-500 h-12 w-12 p-3">08</div>
-        <div className="rounded-full bg-yellow-500 h-12 w-12 p-3">09</div>
-        <div className="rounded-full bg-green-500 h-12 w-12 p-3">10</div>
+        <div className="rounded-full bg-red-500 h-12 w-12 p-3">B01</div>
+        <div className="rounded-full bg-yellow-500 h-12 w-12 p-3">B02</div>
+        <div className="rounded-full bg-green-500 h-12 w-12 p-3">B03</div>
     </div>
   );
 }

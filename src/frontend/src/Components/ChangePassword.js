@@ -22,7 +22,7 @@ const ChangePassword = () => {
       })
       .then((res) => {
           if(res){
-            navigate("/dashboard/home");
+            navigate("/auth/login");
           }
           else {
             alert(res);

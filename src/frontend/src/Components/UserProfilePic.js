@@ -50,7 +50,7 @@ const UserProfilePic = () => {
           }}
           className="place-self-end"
         >
-          <PlusCircleIcon className="h-10 w-10 " />
+          <PlusCircleIcon className="h-10 w-10 hover:rotate-90 transition-all duration-300" />
         </button>
       </form>
 

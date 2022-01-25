@@ -30,21 +30,21 @@ const Buttons = () => {
     <div className="flex flex-col sm:flex-row h-full basis-1/3">
       <div className="grow grid grid-cols-2  md:max-w-md">
         <Link to="/dashboard/mapPage">
-          <div className="bg-green-300 hover:bg-green-500 h-36 sm:h-44 m-5 rounded-2xl p-5 hover:text-white flex flex-col relative">
+          <div className="bg-green-300 transition-all duration-300 hover:scale-110 hover:bg-green-500 h-36 sm:h-44 m-5 rounded-3xl p-5 hover:text-white flex flex-col relative">
             <div className="text-lg sm:text-xl">New Trip</div>
             <LocationMarkerIcon className="sm:h-14 sm:w-14 h-12 w-12 absolute place-self-end mt-16 sm:mt-20  " />
           </div>
         </Link>
-        <div className="bg-orange-300 hover:bg-orange-500 h-36 sm:h-44 m-5  rounded-2xl p-5 hover:text-white flex flex-col relative">
+        <div className="bg-orange-300 transition-all duration-300 hover:scale-110 hover:bg-orange-500 h-36 sm:h-44 m-5  rounded-3xl p-5 hover:text-white flex flex-col relative">
           <div className="text-lg sm:text-xl">Join Existing trip</div>
           <MapIcon className="sm:h-14 sm:w-14 h-12 w-12 absolute place-self-end mt-16 sm:mt-20  " />
         </div>
-        <div className="bg-red-300 hover:bg-red-500 h-36 sm:h-44 m-5 rounded-2xl p-5 hover:text-white flex flex-col relative">
+        <div className="bg-red-300 transition-all duration-300 hover:scale-110 hover:bg-red-500 h-36 sm:h-44 m-5 rounded-3xl p-5 hover:text-white flex flex-col relative">
           <div className="text-lg sm:text-xl">Emergency Contact</div>
           <ExclamationCircleIcon className="sm:h-14 sm:w-14 h-12 w-12 absolute place-self-end mt-16 sm:mt-20  " />
         </div>
         <Link to="/dashboard/profile">
-          <div className="bg-blue-300 hover:bg-blue-500 h-36 sm:h-44 m-5 rounded-2xl p-5 hover:text-white flex flex-col relative">
+          <div className="bg-blue-300 transition-all duration-300 hover:scale-110 hover:bg-blue-500 h-36 sm:h-44 m-5 rounded-3xl p-5 hover:text-white flex flex-col relative">
             <div className="text-lg sm:text-xl">Profile</div>
             <UserCircleIcon className="sm:h-14 sm:w-14 h-12 w-12 absolute place-self-end mt-16 sm:mt-20  " />
           </div>
@@ -81,7 +81,7 @@ const MainPage = () => {
 const Home = () => {
   return (
     <div className="flex absolute z-0 sm:relative">
-      <SideDrawer />
+      {/* <SideDrawer /> */}
       <MainPage />
     </div>
   );
