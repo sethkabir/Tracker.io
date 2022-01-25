@@ -18,9 +18,10 @@ def api_overview(request):
         'signup': 'auth/signup',
         'login': 'auth/login',
         'logout': 'auth/logout',
-        'change-password': 'auth/change-password',
+        'change_password': 'auth/change-password',
         'current-user-profile': 'user',
-        'user-profile': 'user/<id>',
+        'user_profile': 'user/<id>',
+        'update_profile': 'user/update-profile',
     }
     return Response(api_urls)
 
@@ -44,7 +45,6 @@ def login(request):
     if user is not None:
         auth_login(request, user)
         return Response(UserSerializer(request.user).data, status=status.HTTP_202_ACCEPTED)
-    
     return Response({"Error": "User_not_found"}, status=status.HTTP_400_BAD_REQUEST)
 
 @api_view(['POST'])
@@ -72,10 +72,21 @@ def current_user_details(request):
 @api_view(['PUT'])
 @permission_classes([IsAuthenticated])
 def change_password(request):
-    '''Changes current active user password'''
+    '''Changes current user's password'''
     serializer = ChangePasswordSerializer(data=request.data, context={'request': request})
     if serializer.is_valid():
         serializer.save()
         return Response({'success': 'password changed'}, status=status.HTTP_201_CREATED)
     else:
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+@api_view(['PUT'])
+@permission_classes([IsAuthenticated])
+def update_profile(request):
+    '''Updates current user's profile'''
+    user = request.user
+    serializer = UserSerializer(user, data=request.data)
+    if serializer.is_valid():
+        serializer.save()
+        return Response({'success': 'user profile updated'}, status=status.HTTP_202_ACCEPTED)
+    return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)

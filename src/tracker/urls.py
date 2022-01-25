@@ -26,4 +26,6 @@ urlpatterns = [
     path("auth/change-password", change_password),
     path("user", current_user_details),
     path("user/<int:pk>", user_details),
+    path("user/update-profile", update_profile),
+    
 ]

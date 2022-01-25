@@ -1,15 +1,39 @@
 from django.contrib.auth import get_user_model
 from django.core.exceptions import ValidationError
 from django.contrib.auth.password_validation import validate_password as pasval
-
 from rest_framework import serializers
+
+from .models import Profile
 
 User = get_user_model()
 
+class ProfileSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Profile
+        fields = ['contact', 'address', 'picture']
+
 class UserSerializer(serializers.ModelSerializer):
+    profile = ProfileSerializer(required=True)
+
     class Meta:
         model = User
-        fields = '__all__'
+        fields = ['id', 'username', 'first_name', 'last_name', 'email', 'profile', 'last_login', 'date_joined']
+
+    def update(self, instance, validated_data):
+        profile_data = validated_data.pop('profile')
+        profile = Profile.objects.get(user=instance)
+
+        instance.first_name = validated_data.get('first_name', instance.first_name)
+        instance.last_name = validated_data.get('last_name', instance.last_name)
+        instance.email = validated_data.get('email', instance.email)
+        instance.save()
+
+        profile.contact = profile_data.get('contact', profile.contact)
+        profile.address = profile_data.get('address', profile.address)
+        profile.picture = profile_data.get('picture', profile.picture)
+        profile.save()
+
+        return instance
 
 class SignupSerializer(serializers.ModelSerializer):
     class Meta:
@@ -30,17 +54,12 @@ class SignupSerializer(serializers.ModelSerializer):
             first_name=validated_data['first_name'],
             last_name=validated_data['last_name']
         )
-
         user.set_password(validated_data['password'])
         user.save()
-
+        
+        profile = Profile.objects.create(user=user)
+        profile.save()
         return user
-
-# {
-#     "current_password": "1qa2ws3ed4rf",
-#     "new_password1": "1234rewqasdf",
-#     "new_password2": "1234rewqasdf"
-# }
 
 class ChangePasswordSerializer(serializers.Serializer):
     current_password = serializers.CharField(max_length=128, write_only=True, required=True)
@@ -65,3 +84,13 @@ class ChangePasswordSerializer(serializers.Serializer):
         user.set_password(password)
         user.save()
         return user
+
+
+# {
+#     "username": "aa",
+#     "profile": {
+#         "contact": "12345678",
+#         "address": "qswqdfwagrty6j7ut",
+#         "picture": ""
+#     }
+# }
