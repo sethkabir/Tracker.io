@@ -8,6 +8,7 @@ import LandingPage from "./Components/LandingPage";
 import Loading from "./Components/Loading";
 import Test from "./Components/Test";
 import ChangePassword from "./Components/ChangePassword";
+import UpdateProfile from "./Components/UpdateProfile";
 import {
   BrowserRouter as Router,
   Routes,
@@ -42,7 +43,7 @@ const App = () => {
           <Route path="login" element={<Login />} />
           <Route path="signup" element={<SignUp />} />
         </Route>
-        <Route path="/auth/change-password" element={<ChangePassword/>} />
+        <Route path="/auth/change-password" element={<ChangePassword />} />
 
         {/* !!!test page to test frontend changes!!! */}
         <Route exact path="/test" element={<Test />} />
@@ -57,6 +58,7 @@ const App = () => {
           <Route path="home" element={<Home />} />
           <Route path="mapPage" element={<MapPage />} />
           <Route path="profile" element={<Profile />} />
+          <Route path="updateProfile" element={<UpdateProfile />} />
         </Route>
       </Routes>
     </Router>

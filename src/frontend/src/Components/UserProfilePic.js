@@ -24,9 +24,9 @@ const UserProfilePic = () => {
   return (
     <div className="flex">
       {preview ? (
-        <img src={preview} alt="" className="h-44 w-44 rounded-full" />
+        <img src={preview} alt="" className="h-44 w-44 rounded-full bg-red-500 m-3" />
       ) : (
-        <UserCircleIcon className="h-44 w-44 rounded-full" />
+        <UserCircleIcon className="h-44 w-44 rounded-full " />
       )}
       <form className="flex">
         <input
@@ -48,9 +48,9 @@ const UserProfilePic = () => {
             e.preventDefault();
             fileInputRef.current.click();
           }}
-          className="place-self-end"
+          className="flex"
         >
-          <PlusCircleIcon className="h-10 w-10 hover:rotate-90 transition-all duration-300" />
+          <PlusCircleIcon className="h-10 w-10 hover:rotate-90 transition-all duration-300 place-self-center" />
         </button>
       </form>
 

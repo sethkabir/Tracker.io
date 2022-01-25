@@ -4,6 +4,8 @@ import Navbar from "./Navbar";
 import { useState, useEffect } from "react";
 import UserProfilePic from "./UserProfilePic";
 import { Link } from "react-router-dom";
+import { PencilIcon } from "@heroicons/react/solid";
+import { Outlet } from "react-router-dom";
 
 const UserInfo = () => {
   const [profile, setProfile] = useState(null);
@@ -14,51 +16,61 @@ const UserInfo = () => {
     });
   }, []);
 
-  if (!profile) return null;
+  //never trust react because u cant do beautiful things with it  - shivi, 2022
+  if (!profile)
+    return (
+      <span className="mx-8 mb-2 p-2 flex flex-col place-content-start space-y-1">
+        <div>Username</div>
+        <div className="rounded-lg h-9 bg-slate-700 text-white p-1 pl-3">
+          something
+        </div>
+      </span>
+    );
 
   return (
     <div className="">
       <span className="mx-8 mb-2 p-2 flex flex-col place-content-start space-y-1">
         <div>Username</div>
-        <div className="rounded-lg h-9 bg-slate-700 text-white p-1">
+        <div className="rounded-lg h-9 bg-slate-700 text-white p-1 pl-2">
           {profile.username}
         </div>
       </span>
 
-      <span className=  "mx-8 mb-2 p-2 flex flex-col place-content-start space-y-1">
+      <span className="mx-8 mb-2 p-2 flex flex-col place-content-start space-y-1">
         <div>Name</div>
-        <div className="rounded-lg h-9 bg-slate-700 text-white p-1">
-          {profile.first_name}{" "}{profile.last_name}
+        <div className="rounded-lg h-9 bg-slate-700 text-white p-1 pl-2">
+          {profile.first_name} {profile.last_name}
         </div>
       </span>
 
       <span className="mx-8 mb-2 p-2 flex flex-col place-content-start space-y-1">
         <div>Email</div>
-        <div className="rounded-lg h-9 bg-slate-700 text-white p-1">
+        <div className="rounded-lg h-9 bg-slate-700 text-white p-1 pl-2">
           {profile.email}
         </div>
       </span>
 
       <div className="mx-8 mb-2 p-2 flex flex-col place-content-start space-y-1">
         <div>Contact</div>
-        <div className="rounded-lg h-9 bg-slate-700 text-white p-1">
-        {profile.profile.contact}
+        <div className="rounded-lg h-9 bg-slate-700 text-white p-1 pl-2">
+          {profile.profile.contact ? (
+            profile.profile.contact
+          ) : (
+            <div className="text-slate-400">Add Contact</div>
+          )}
         </div>
       </div>
 
       <div className="mx-8 mb-2 p-2 flex flex-col place-content-start space-y-1">
         <div>Address</div>
-        <div className="rounded-lg h-9 bg-slate-700 text-white p-1">
-        {profile.profile.address}
+        <div className="rounded-lg h-9 bg-slate-700 text-white p-1 pl-2">
+          {profile.profile.address ? (
+            profile.profile.address
+          ) : (
+            <div className="text-slate-400">Add Address</div>
+          )}
         </div>
       </div>
-
-      {/* <div className="mx-8 mb-2 p-2 flex flex-col content-center space-y-1">
-        <div>Status</div>
-        <div className="rounded-lg h-9 bg-slate-700 text-white p-1">
-          <div>Available</div>
-        </div>
-      </div> */}
     </div>
   );
 };
@@ -66,8 +78,13 @@ const UserInfo = () => {
 const ChangePassword = () => {
   return (
     <div>
-      <div className=" flex place-content-end">
-        <button className="rounded-lg mr-8 bg-blue-600 p-1 text-white">
+      <div className=" flex justify-between mt-3">
+        <button className="rounded-lg ml-14 bg-blue-200 hover:bg-blue-600 h-12 px-3">
+          <Link to="/dashboard/updateProfile">
+            <PencilIcon className="h-8 w-8" />
+          </Link>
+        </button>
+        <button className="rounded-lg mr-10 bg-blue-200 hover:bg-blue-600 hover:text-white px-5 h-12 ">
           <Link to="/auth/change-password">Change Password</Link>
         </button>
       </div>
