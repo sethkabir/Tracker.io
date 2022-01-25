@@ -25,11 +25,10 @@ const UserInfo = () => {
         </div>
       </span>
 
-      <span className="mx-8 mb-2 p-2 flex flex-col place-content-start space-y-1">
+      <span className=  "mx-8 mb-2 p-2 flex flex-col place-content-start space-y-1">
         <div>Name</div>
         <div className="rounded-lg h-9 bg-slate-700 text-white p-1">
-          {profile.first_name}
-          {profile.last_name}
+          {profile.first_name}{" "}{profile.last_name}
         </div>
       </span>
 
