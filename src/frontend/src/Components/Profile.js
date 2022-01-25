@@ -43,23 +43,23 @@ const UserInfo = () => {
       <div className="mx-8 mb-2 p-2 flex flex-col place-content-start space-y-1">
         <div>Contact</div>
         <div className="rounded-lg h-9 bg-slate-700 text-white p-1">
-          9872342395
+        {profile.profile.contact}
         </div>
       </div>
 
       <div className="mx-8 mb-2 p-2 flex flex-col place-content-start space-y-1">
         <div>Address</div>
         <div className="rounded-lg h-9 bg-slate-700 text-white p-1">
-          #B-68 Anardana Chowk, Patiala, Punjab
+        {profile.profile.address}
         </div>
       </div>
 
-      <div className="mx-8 mb-2 p-2 flex flex-col content-center space-y-1">
+      {/* <div className="mx-8 mb-2 p-2 flex flex-col content-center space-y-1">
         <div>Status</div>
         <div className="rounded-lg h-9 bg-slate-700 text-white p-1">
           <div>Available</div>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 };
