@@ -13,6 +13,10 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 const Navbar = (props) => {
+  //resolves the csrf token issue!
+  axios.defaults.xsrfHeaderName = "X-CSRFTOKEN";
+  axios.defaults.xsrfCookieName = "csrftoken";
+
   const navigate = useNavigate();
 
   //POST request (logout)
