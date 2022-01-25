@@ -39,7 +39,9 @@ const Navbar = (props) => {
 
   return (
     <div className="flex place-content-between m-2 z-30 ">
-      <div className="font-bold text-3xl">TrackerApp</div>
+      <Link to="/dashboard/home">
+        <div className="font-bold text-3xl">TrackerApp</div>
+      </Link>
       <button onClick={() => setIsOpen(!isOpen)} className="">
         <MenuIcon className="h-8 w-8" />
       </button>
