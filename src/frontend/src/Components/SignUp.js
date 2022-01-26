@@ -2,11 +2,15 @@ import { useNavigate } from "react-router-dom";
 import React, { useState } from "react";
 import axios from "axios";
 import mapLogo from "../Images/p3.jpg";
+import { EyeIcon } from "@heroicons/react/solid";
 
 const SignUp = () => {
   //resolves the csrf token issue!
   axios.defaults.xsrfHeaderName = "X-CSRFTOKEN";
   axios.defaults.xsrfCookieName = "csrftoken";
+
+  //show password functionality
+  const [showPassword, setShowPassword] = useState(false);
 
   const [first_name, setFirstName] = useState("");
   const [last_name, setLastName] = useState("");
@@ -64,13 +68,21 @@ const SignUp = () => {
           placeholder="Last Name"
           type="text"
         />
-        <input
-          className="block h-10 border border-gray-300 rounded-md focus:border-blue-500  outline-none tracking-widest p-2"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          placeholder="Password"
-          type="password"
-        />
+        <div className="flex">
+          <input
+            className="block h-10 w-full border border-gray-300 rounded-md focus:border-blue-500  outline-none tracking-widest p-2"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            placeholder="Password"
+            type={showPassword ? "text" : "password"}
+          />
+          <button
+            onClick={() => setShowPassword(!showPassword)}
+            className="mx-2"
+          >
+            <EyeIcon className="h-6" />
+          </button>
+        </div>
         <input
           className="block h-10 border border-gray-300 rounded-md focus:border-blue-500  outline-none tracking-widest p-2"
           value={username}
