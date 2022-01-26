@@ -102,7 +102,7 @@ const Login = () => {
             />
             <button
               onClick={() => setShowPassword(!showPassword)}
-              className="mx-2"
+              className="-mx-10"
             >
               <EyeIcon className="h-6" />
             </button>
