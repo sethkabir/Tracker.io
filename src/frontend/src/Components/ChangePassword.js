@@ -47,7 +47,7 @@ const ChangePassword = () => {
                 className="rounded-lg px-2 w-full"
                 type={showPassword ? "text" : "password"}
               />
-              <button onClick={() => setShowPassword(!showPassword)} className="mx-2">
+              <button onClick={() => setShowPassword(!showPassword)} className="-mx-10">
                 <EyeIcon className="h-6" />
               </button>
             </div>
