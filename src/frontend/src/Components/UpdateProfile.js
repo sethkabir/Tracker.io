@@ -7,20 +7,24 @@ const UpdateProfile = () => {
   axios.defaults.xsrfHeaderName = "X-CSRFTOKEN";
   axios.defaults.xsrfCookieName = "csrftoken";
 
-  useEffect(() => {
-    axios.get("http://127.0.0.1:8080/api/user").then((response) => {
-      setProfile(response.data);
-    });
-  }, []);
-
   //get user's current profile info
   const [profile, setProfile] = useState(null);
-
   const [first_name, setFirstName] = useState(null);
   const [last_name, setLastName] = useState(null);
   const [email, setEmail] = useState(null);
   const [contact, setContact] = useState(null);
   const [address, setAddress] = useState(null);
+
+  useEffect(() => {
+    axios.get("http://127.0.0.1:8080/api/user").then((response) => {
+      setProfile(response.data);
+      setFirstName(response.data.first_name);
+      setLastName(response.data.last_name);
+      setEmail(response.data.email);
+      setContact(response.data.profile.contact);
+      setAddress(response.data.profile.address);
+    });
+  }, []);
 
   const navigate = useNavigate();
 
@@ -39,7 +43,7 @@ const UpdateProfile = () => {
       .put("http://127.0.0.1:8080/api/user/update-profile", item)
       .then((res) => {
         if (res) {
-          navigate("/dashboard/profile");
+          navigate("/dashboard/profile/showProfile");
         }
       })
       .catch((err) => console.error(err));

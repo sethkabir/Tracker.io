@@ -4,6 +4,7 @@
 LandingPage.js
 Home.js
     |---Navbar.js
+    |---EmergencyContact.js
 Register.js
     |---SignUp.js
     |---Login.js
@@ -14,6 +15,7 @@ MapPage.js
 Profile.js
     |---Navbar.js
     |---UserProfilePic.js
+    |---UpdateProfile.js
     |---ChangePassword.js
 Test.js
 ``` 

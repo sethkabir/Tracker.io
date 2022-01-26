@@ -3,7 +3,7 @@ import Login from "./Components/Login";
 import SignUp from "./Components/SignUp";
 import Home from "./Components/Home";
 import MapPage from "./Components/MapPage";
-import Profile from "./Components/Profile";
+import { Profile, UserInfo } from "./Components/Profile";
 import LandingPage from "./Components/LandingPage";
 import Loading from "./Components/Loading";
 import Test from "./Components/Test";
@@ -57,8 +57,10 @@ const App = () => {
         <Route exact path="/dashboard" element={<Dashboard />}>
           <Route path="home" element={<Home />} />
           <Route path="mapPage" element={<MapPage />} />
-          <Route path="profile" element={<Profile />} />
-          <Route path="updateProfile" element={<UpdateProfile />} />
+          <Route path="profile" element={<Profile />}>
+            <Route path="showProfile" element={<UserInfo />} />
+            <Route path="updateProfile" element={<UpdateProfile />} />
+          </Route>
         </Route>
       </Routes>
     </Router>

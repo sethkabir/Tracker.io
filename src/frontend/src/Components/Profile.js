@@ -7,6 +7,23 @@ import { Link } from "react-router-dom";
 import { PencilIcon } from "@heroicons/react/solid";
 import { Outlet } from "react-router-dom";
 
+const ChangePassword = () => {
+  return (
+    <div>
+      <div className=" flex justify-between mt-3">
+        <button className="rounded-lg ml-14 bg-blue-200 hover:bg-blue-600 h-12 px-3">
+          <Link to="/dashboard/profile/updateProfile">
+            <PencilIcon className="h-8 w-8" />
+          </Link>
+        </button>
+        <button className="rounded-lg mr-10 bg-blue-200 hover:bg-blue-600 hover:text-white px-5 h-12 ">
+          <Link to="/auth/change-password">Change Password</Link>
+        </button>
+      </div>
+    </div>
+  );
+};
+
 const UserInfo = () => {
   const [profile, setProfile] = useState(null);
 
@@ -19,12 +36,15 @@ const UserInfo = () => {
   //never trust react because u cant do beautiful things with it  - shivi, 2022
   if (!profile)
     return (
-      <span className="mx-8 mb-2 p-2 flex flex-col place-content-start space-y-1">
-        <div>Username</div>
-        <div className="rounded-lg h-9 bg-slate-700 text-white p-1 pl-3">
-          something
-        </div>
-      </span>
+      <div>
+        <span className="mx-8 mb-2 p-2 flex flex-col place-content-start space-y-1">
+          <div>Username</div>
+          <div className="rounded-lg h-9 bg-slate-700 text-white p-1 pl-3">
+            something
+          </div>
+        </span>
+        <ChangePassword />
+      </div>
     );
 
   return (
@@ -71,23 +91,7 @@ const UserInfo = () => {
           )}
         </div>
       </div>
-    </div>
-  );
-};
-
-const ChangePassword = () => {
-  return (
-    <div>
-      <div className=" flex justify-between mt-3">
-        <button className="rounded-lg ml-14 bg-blue-200 hover:bg-blue-600 h-12 px-3">
-          <Link to="/dashboard/updateProfile">
-            <PencilIcon className="h-8 w-8" />
-          </Link>
-        </button>
-        <button className="rounded-lg mr-10 bg-blue-200 hover:bg-blue-600 hover:text-white px-5 h-12 ">
-          <Link to="/auth/change-password">Change Password</Link>
-        </button>
-      </div>
+      <ChangePassword />
     </div>
   );
 };
@@ -97,10 +101,9 @@ const Profile = () => {
     <div className="flex flex-col h-screen">
       <Navbar />
       <UserProfilePic />
-      <UserInfo />
-      <ChangePassword />
+      <Outlet />
     </div>
   );
 };
 
-export default Profile;
+export { Profile, UserInfo };

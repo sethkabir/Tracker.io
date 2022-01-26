@@ -43,7 +43,7 @@ const Buttons = () => {
           <div className="text-lg sm:text-xl">Emergency Contact</div>
           <ExclamationCircleIcon className="sm:h-14 sm:w-14 h-12 w-12 absolute place-self-end mt-16 sm:mt-20  " />
         </div>
-        <Link to="/dashboard/profile">
+        <Link to="/dashboard/profile/showProfile">
           <div className="bg-blue-300 transition-all duration-300 hover:scale-110 hover:bg-blue-500 h-36 sm:h-44 m-5 rounded-3xl p-5 hover:text-white flex flex-col relative">
             <div className="text-lg sm:text-xl">Profile</div>
             <UserCircleIcon className="sm:h-14 sm:w-14 h-12 w-12 absolute place-self-end mt-16 sm:mt-20  " />
