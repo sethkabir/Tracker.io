@@ -3,7 +3,6 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 const UpdateProfile = () => {
-  console.log("1");
   //resolves the csrf token issue!
   axios.defaults.xsrfHeaderName = "X-CSRFTOKEN";
   axios.defaults.xsrfCookieName = "csrftoken";
@@ -11,7 +10,6 @@ const UpdateProfile = () => {
   useEffect(() => {
     axios.get("http://127.0.0.1:8080/api/user").then((response) => {
       setProfile(response.data);
-      console.log("2");
     });
   }, []);
 
@@ -27,7 +25,6 @@ const UpdateProfile = () => {
   const navigate = useNavigate();
 
   async function updateProfile() {
-    console.log("3");
     let item = {
       username: `${profile.username}`,
       first_name: `${first_name}`,
@@ -41,16 +38,15 @@ const UpdateProfile = () => {
     await axios
       .put("http://127.0.0.1:8080/api/user/update-profile", item)
       .then((res) => {
-          if(res){
-              navigate("/dashboard/profile");
-          }
+        if (res) {
+          navigate("/dashboard/profile");
+        }
       })
       .catch((err) => console.error(err));
   }
 
   return (
     <div className="">
-      {console.log("4")}
       <span className="mx-8 mb-2 p-2 flex flex-col place-content-start space-y-1">
         <div>First Name</div>
         <input
