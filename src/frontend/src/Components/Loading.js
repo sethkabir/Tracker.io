@@ -1,4 +1,4 @@
-//loading screen post discord authorization 
+//loading screen post discord authorization
 import axios from "axios";
 
 const Loading = () => {
@@ -61,19 +61,20 @@ const Loading = () => {
       console.error(err);
     });
 
-
   //main screen (maybe add landing page??????)
-  return <div class="fixed top-0 left-0 right-0 bottom-0 w-full h-screen z-50 overflow-hidden bg-gray-700 opacity-75 flex flex-col items-center justify-center">
-	<div class="loader ease-linear rounded-full border-4 border-t-4 border-gray-200 h-12 w-12 mb-4"></div>
-	<h2 class="text-center text-white text-xl font-semibold">Loading...</h2>
-	<p class="w-1/3 text-center text-white">This may take a few seconds, please don't close this page.</p>
-</div> ;
+  return (
+    <div className="fixed top-0 left-0 right-0 bottom-0 w-full h-screen z-50 overflow-hidden bg-primary opacity-75 flex flex-col items-center justify-center">
+      <h2 className="flex animate-pulse">
+        <div className="text-center text-white text-xl font-semibold ">Loading</div>
+        <div className="loader ease-linear rounded-full border-3 border-t-4 border-gray-200 h-1 w-1 ml-1 mb-2  place-self-end"></div>
+        <div className="loader ease-linear rounded-full border-3 border-t-4 border-gray-200 h-1 w-1 ml-1 mb-2  place-self-end"></div>
+        <div className="loader ease-linear rounded-full border-3 border-t-4 border-gray-200 h-1 w-1 ml-1 mb-2  place-self-end"></div>
+      </h2>
+      <p className="text-center text-white">
+        This may take a few seconds, please don't close this page.
+      </p>
+    </div>
+  );
 };
 
 export default Loading;
-
-<div class="fixed top-0 left-0 right-0 bottom-0 w-full h-screen z-50 overflow-hidden bg-gray-700 opacity-75 flex flex-col items-center justify-center">
-	<div class="loader ease-linear rounded-full border-4 border-t-4 border-gray-200 h-12 w-12 mb-4"></div>
-	<h2 class="text-center text-white text-xl font-semibold">Loading...</h2>
-	<p class="w-1/3 text-center text-white">This may take a few seconds, please don't close this page.</p>
-</div> 
