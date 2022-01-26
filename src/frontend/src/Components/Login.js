@@ -5,10 +5,10 @@ import { useState } from "react";
 import { EyeIcon } from "@heroicons/react/solid";
 
 //redirect url to discord authentication
-// const external_url =
-//   "https://discord.com/api/oauth2/authorize?client_id=930069736736301067&redirect_uri=http%3A%2F%2F127.0.0.1%3A8080%2Fauth%2Fdiscord&response_type=code&scope=identify%20email";
 const external_url =
-  "https://discord.com/api/oauth2/authorize?client_id=930069736736301067&redirect_uri=http%3A%2F%2F127.0.0.1%3A3000%2Fauth%2Fdiscord&response_type=code&scope=identify%20email";
+  "https://discord.com/api/oauth2/authorize?client_id=930069736736301067&redirect_uri=http%3A%2F%2F127.0.0.1%3A8080%2Fauth%2Fdiscord&response_type=code&scope=identify%20email";
+// const external_url =
+//   "https://discord.com/api/oauth2/authorize?client_id=930069736736301067&redirect_uri=http%3A%2F%2F127.0.0.1%3A3000%2Fauth%2Fdiscord&response_type=code&scope=identify%20email";
 
 const Login = () => {
   //resolves the csrf token issue!
@@ -78,7 +78,7 @@ const Login = () => {
         alt="true"
       />
       <div className="flex text-5xl mx-auto sm:mt-40 mt-20 italic z-10">
-        Tracker
+        Bike Buddy
       </div>
       <div className="flex text-lg  mx-auto mt-5 mb-20 z-10">
         Stay in touch with your friends on the go!

@@ -47,7 +47,7 @@ const SignUp = () => {
         alt="true"
       />
       <div className="flex text-5xl mx-auto sm:mt-35 mt-20  italic z-10">
-        Tracker
+        Bike Buddy
       </div>
       <div className="flex text-lg  mx-auto mt-5 mb-20 z-10">
         Stay in touch with your friends on the go!

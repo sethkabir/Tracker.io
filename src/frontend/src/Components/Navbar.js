@@ -7,10 +7,11 @@ import {
   HomeIcon,
 } from "@heroicons/react/solid";
 import { LogoutIcon } from "@heroicons/react/outline";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+
 
 const Navbar = (props) => {
   //resolves the csrf token issue!
@@ -18,6 +19,14 @@ const Navbar = (props) => {
   axios.defaults.xsrfCookieName = "csrftoken";
 
   const navigate = useNavigate();
+
+  const [profile, setProfile] = useState(null);
+  useEffect(() => {
+    axios.get("http://127.0.0.1:8080/api/user").then((response) => {
+      setProfile(response.data);
+    });
+  }, []);
+
 
   //POST request (logout)
   async function logout() {
@@ -41,15 +50,21 @@ const Navbar = (props) => {
   //state for when the dropdown menu is open/closed
   const [isOpen, setIsOpen] = useState(false);
 
+  if(!profile) return null
+
   return (
-    <div className="flex place-content-between m-2 z-30 ">
+    <div className="flex place-content-between m-2 z-30">
       <Link to="/dashboard/home">
         <div className="font-bold text-3xl">TrackerApp</div>
       </Link>
-      <button onClick={() => setIsOpen(!isOpen)} className="">
-        <MenuIcon className="h-8 w-8" />
-      </button>
-
+      <div className="flex">
+        <div className="text-sm w-24  my-auto flex justify-end sm:w-full sm:mr-2">
+          <p className="truncate">Hi! {profile.username}</p>
+        </div>
+        <button onClick={() => setIsOpen(!isOpen)} className="">
+          <MenuIcon className="h-8 w-8 mx-1" />
+        </button>
+      </div>
       {/* dropdown functionality */}
       {isOpen && (
         <div className="origin-top-right absolute right-0 mt-10 w-56 rounded-md shadow-lg bg-gray-100 ring-1 ring-black ring-opacity-5 divide-y divide-gray-300 focus:outline-none">
