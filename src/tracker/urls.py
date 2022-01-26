@@ -27,5 +27,6 @@ urlpatterns = [
     path("user", current_user_details),
     path("user/<int:pk>", user_details),
     path("user/update-profile", update_profile),
-    
+    path("user/add-contact", add_contact),
+    path("user/get-contacts", get_contacts),    
 ]
