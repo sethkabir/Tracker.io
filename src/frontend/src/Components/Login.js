@@ -2,17 +2,21 @@ import { Link, useNavigate } from "react-router-dom";
 import mapLogo from "../Images/p3.jpg";
 import axios from "axios";
 import { useState } from "react";
+import { EyeIcon } from "@heroicons/react/solid";
 
 //redirect url to discord authentication
-// const external_url =
-//   "https://discord.com/api/oauth2/authorize?client_id=930069736736301067&redirect_uri=http%3A%2F%2F127.0.0.1%3A8080%2Fauth%2Fdiscord&response_type=code&scope=identify%20email";
 const external_url =
-  "https://discord.com/api/oauth2/authorize?client_id=930069736736301067&redirect_uri=http%3A%2F%2F127.0.0.1%3A3000%2Fauth%2Fdiscord&response_type=code&scope=identify%20email";
+  "https://discord.com/api/oauth2/authorize?client_id=930069736736301067&redirect_uri=http%3A%2F%2F127.0.0.1%3A8080%2Fauth%2Fdiscord&response_type=code&scope=identify%20email";
+// const external_url =
+//   "https://discord.com/api/oauth2/authorize?client_id=930069736736301067&redirect_uri=http%3A%2F%2F127.0.0.1%3A3000%2Fauth%2Fdiscord&response_type=code&scope=identify%20email";
 
 const Login = () => {
   //resolves the csrf token issue!
   axios.defaults.xsrfHeaderName = "X-CSRFTOKEN";
   axios.defaults.xsrfCookieName = "csrftoken";
+
+  //show password functionality
+  const [showPassword, setShowPassword] = useState(false);
 
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -42,7 +46,7 @@ const Login = () => {
       });
   }
 
-  //this is for the discord login functionality
+  // // this is for the discord login functionality
   // async function logDiscord() {
   //   let item = {
   //     client_id: "930069736736301067",
@@ -74,7 +78,7 @@ const Login = () => {
         alt="true"
       />
       <div className="flex text-5xl mx-auto sm:mt-40 mt-20 italic z-10">
-        Tracker
+        Bike Buddy
       </div>
       <div className="flex text-lg  mx-auto mt-5 mb-20 z-10">
         Stay in touch with your friends on the go!
@@ -88,13 +92,21 @@ const Login = () => {
             placeholder="Username"
             type="text"
           />
-          <input
-            className="block h-10 border border-gray-300 rounded-md focus:border-blue-500 outline-none  tracking-widest p-2"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            placeholder="Password"
-            type="password"
-          />
+          <div className="flex">
+            <input
+              className="block h-10 w-full border border-gray-300 rounded-md focus:border-blue-500 outline-none  tracking-widest p-2"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              placeholder="Password"
+              type={showPassword ? "text" : "password"}
+            />
+            <button
+              onClick={() => setShowPassword(!showPassword)}
+              className="mx-2"
+            >
+              <EyeIcon className="h-6" />
+            </button>
+          </div>
           <span className="flex place-items-center justify-between">
             <button
               onClick={login}

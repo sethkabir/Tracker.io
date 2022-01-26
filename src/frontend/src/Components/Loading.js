@@ -14,7 +14,7 @@ const Loading = () => {
   params.append("client_secret", "qJ4oVdKFyRIWST7jm8WC2yyjgoADDnqV");
   params.append("grant_type", "authorization_code");
   params.append("code", code);
-  params.append("redirect_uri", "http://127.0.0.1:3000/auth/discord");
+  params.append("redirect_uri", "http://127.0.0.1:8080/auth/discord");
   params.append("scope", "identify");
 
   //POST REQUEST (to obtain the access token)
