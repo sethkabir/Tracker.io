@@ -8,7 +8,7 @@ from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated, IsAdminUser
 
 from .serializers import *
-
+from .models import *
 User = get_user_model()
 
 @api_view(['GET'])  
@@ -22,6 +22,8 @@ def api_overview(request):
         'current-user-profile': 'user',
         'user_profile': 'user/<id>',
         'update_profile': 'user/update-profile',
+        'add_contact': 'user/add-contact',
+        "get_contact": "user/get-contacts",
     }
     return Response(api_urls)
 
@@ -58,7 +60,10 @@ def logout(request):
 @permission_classes([IsAuthenticated, IsAdminUser])
 def user_details(request, pk):
     '''Returns specific user details'''
-    serializer = UserSerializer(User.objects.get(id=pk), context={'request': request})
+    try:
+        serializer = UserSerializer(User.objects.get(id=pk), context={'request': request})
+    except User.DoesNotExist:
+        return Response({"Error": "User does not exist"}, status=status.HTTP_404_NOT_FOUND)
     return Response(serializer.data, status=status.HTTP_200_OK)
 
 @api_view(['GET'])
@@ -90,3 +95,37 @@ def update_profile(request):
         serializer.save()
         return Response({'success': 'user profile updated'}, status=status.HTTP_202_ACCEPTED)
     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+@api_view(['POST'])
+@permission_classes([IsAuthenticated])
+def add_contact(request):
+    '''Adds emergency contact to current user'''
+    user = request.user
+    request.data["user"] = user.id
+    serializer = ContactSerializer(data=request.data)
+    if serializer.is_valid():
+        serializer.save()
+        return Response({"success": 'Contact stored'}, status=status.HTTP_201_CREATED)
+    return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+@api_view(['GET'])
+@permission_classes([IsAuthenticated])
+def get_contacts(request):
+    '''Fetches contact list'''
+    try:
+        serializer = ContactSerializer(EmergencyContact.objects.all(), many=True)
+    except EmergencyContact.DoesNotExist:
+        return Response({"'Error": "Does not exist"}, status=status.HTTP_404_NOT_FOUND)
+    return Response(serializer.data)
+
+@api_view(['PUT'])
+@permission_classes([IsAuthenticated])
+def get_contacts(request):
+    '''Fetches contact list'''
+    try:
+        serializer = ContactSerializer(EmergencyContact.objects.all(), many=True)
+    except EmergencyContact.DoesNotExist:
+        return Response({"'Error": "Does not exist"}, status=status.HTTP_404_NOT_FOUND)
+    return Response(serializer.data)
