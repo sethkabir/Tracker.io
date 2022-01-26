@@ -1,9 +1,10 @@
+from dataclasses import fields
 from django.contrib.auth import get_user_model
 from django.core.exceptions import ValidationError
 from django.contrib.auth.password_validation import validate_password as pasval
 from rest_framework import serializers
 
-from .models import Profile
+from .models import EmergencyContact, Profile
 
 User = get_user_model()
 
@@ -56,7 +57,7 @@ class SignupSerializer(serializers.ModelSerializer):
         )
         user.set_password(validated_data['password'])
         user.save()
-        
+
         profile = Profile.objects.create(user=user)
         profile.save()
         return user
@@ -85,12 +86,28 @@ class ChangePasswordSerializer(serializers.Serializer):
         user.save()
         return user
 
+class ContactSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = EmergencyContact
+        fields = ['user', 'first_name', 'last_name', 'contact', 'email', 'address']
+    
+    def create(self, validated_data):
+        contact = EmergencyContact.objects.create(
+            user = validated_data['user'],
+            first_name = validated_data["first_name"],
+            last_name = validated_data["last_name"],
+            contact = validated_data["contact"],
+            email = validated_data["email"],
+            address = validated_data["address"],
+        )
+
+        contact.save()
+        return contact
 
 # {
-#     "username": "aa",
-#     "profile": {
-#         "contact": "12345678",
-#         "address": "qswqdfwagrty6j7ut",
-#         "picture": ""
-#     }
+#     "first_name": "angie",
+#     "last_name": "jolly",
+#     "contact": "+91-987315679",
+#     "email": "jollygood@angie.com",
+#     "address": "Hollywood"
 # }
