@@ -89,7 +89,7 @@ class ChangePasswordSerializer(serializers.Serializer):
 class ContactSerializer(serializers.ModelSerializer):
     class Meta:
         model = EmergencyContact
-        fields = ['user', 'first_name', 'last_name', 'contact', 'email', 'address']
+        fields = ['id', 'user', 'first_name', 'last_name', 'contact', 'email', 'address']
     
     def create(self, validated_data):
         contact = EmergencyContact.objects.create(

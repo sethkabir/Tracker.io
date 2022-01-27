@@ -25,6 +25,10 @@ const ChangePassword = () => {
 };
 
 const UserInfo = () => {
+  //resolves the csrf token issue!
+  axios.defaults.xsrfHeaderName = "X-CSRFTOKEN";
+  axios.defaults.xsrfCookieName = "csrftoken";
+  
   const [profile, setProfile] = useState(null);
 
   useEffect(() => {

@@ -114,18 +114,19 @@ def add_contact(request):
 @permission_classes([IsAuthenticated])
 def get_contacts(request):
     '''Fetches contact list'''
+    user = request.user
     try:
-        serializer = ContactSerializer(EmergencyContact.objects.all(), many=True)
+        serializer = ContactSerializer(EmergencyContact.objects.filter(user=user), many=True)
     except EmergencyContact.DoesNotExist:
         return Response({"'Error": "Does not exist"}, status=status.HTTP_404_NOT_FOUND)
     return Response(serializer.data)
 
-@api_view(['PUT'])
-@permission_classes([IsAuthenticated])
-def get_contacts(request):
-    '''Fetches contact list'''
-    try:
-        serializer = ContactSerializer(EmergencyContact.objects.all(), many=True)
-    except EmergencyContact.DoesNotExist:
-        return Response({"'Error": "Does not exist"}, status=status.HTTP_404_NOT_FOUND)
-    return Response(serializer.data)
+# @api_view(['PUT'])
+# @permission_classes([IsAuthenticated])
+# def modify_contacts(request, id):
+#     '''Fetches contact list'''
+#     try:
+#         serializer = ContactSerializer(EmergencyContact.objects.all(), many=True)
+#     except EmergencyContact.DoesNotExist:
+#         return Response({"'Error": "Does not exist"}, status=status.HTTP_404_NOT_FOUND)
+#     return Response(serializer.data)
