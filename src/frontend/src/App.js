@@ -9,6 +9,8 @@ import Loading from "./Components/Loading";
 import Test from "./Components/Test";
 import ChangePassword from "./Components/ChangePassword";
 import UpdateProfile from "./Components/UpdateProfile";
+import EmergencyContact from "./Components/EmergencyContact";
+
 import {
   BrowserRouter as Router,
   Routes,
@@ -57,6 +59,7 @@ const App = () => {
         <Route exact path="/dashboard" element={<Dashboard />}>
           <Route path="home" element={<Home />} />
           <Route path="mapPage" element={<MapPage />} />
+          <Route path="emergencyContact" element={<EmergencyContact />} />
           <Route path="profile" element={<Profile />}>
             <Route path="showProfile" element={<UserInfo />} />
             <Route path="updateProfile" element={<UpdateProfile />} />
