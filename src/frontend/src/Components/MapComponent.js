@@ -14,7 +14,7 @@ mapboxgl.workerClass =require("worker-loader!mapbox-gl/dist/mapbox-gl-csp-worker
 
 const geolocateControlStyle = {
   right: 10,
-  top: 10
+  top: 20
 };
 const MapComponent = () => {
   //the following code obtains the current location for the user at regular intervals of time and updates them
