@@ -17,6 +17,7 @@ def api_overview(request):
     api_urls = {
         'signup': 'auth/signup',
         'login': 'auth/login',
+        'discord_login': 'auth/discord-login',
         'logout': 'auth/logout',
         'change_password': 'auth/change-password',
         'current-user-profile': 'user',
@@ -48,6 +49,18 @@ def login(request):
         auth_login(request, user)
         return Response(UserSerializer(request.user).data, status=status.HTTP_202_ACCEPTED)
     return Response({"Error": "User_not_found"}, status=status.HTTP_400_BAD_REQUEST)
+
+@api_view(['POST'])
+def discord_login(request):
+    '''Discord login endpoint'''
+    username = request.data['username']
+    return Response({"Hello": username})
+    # user = authenticate(username=username, password=password)
+
+    # if user is not None:
+    #     auth_login(request, user)
+    #     return Response(UserSerializer(request.user).data, status=status.HTTP_202_ACCEPTED)
+    # return Response({"Error": "User_not_found"}, status=status.HTTP_400_BAD_REQUEST)
 
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
@@ -121,12 +134,3 @@ def get_contacts(request):
         return Response({"'Error": "Does not exist"}, status=status.HTTP_404_NOT_FOUND)
     return Response(serializer.data)
 
-# @api_view(['PUT'])
-# @permission_classes([IsAuthenticated])
-# def modify_contacts(request, id):
-#     '''Fetches contact list'''
-#     try:
-#         serializer = ContactSerializer(EmergencyContact.objects.all(), many=True)
-#     except EmergencyContact.DoesNotExist:
-#         return Response({"'Error": "Does not exist"}, status=status.HTTP_404_NOT_FOUND)
-#     return Response(serializer.data)
