@@ -19,11 +19,18 @@ const Navbar = (props) => {
   axios.defaults.xsrfCookieName = "csrftoken";
 
   const navigate = useNavigate();
-
-  const [profile, setProfile] = useState(null);
+  let anon = {
+    username: "Guest",
+    first_name: "Anonymous",
+    last_name: "User",
+  }
+  const [profile, setProfile] = useState(anon);
   useEffect(() => {
     axios.get("http://127.0.0.1:8080/api/user").then((response) => {
       setProfile(response.data);
+    })
+    .catch((err) => {
+      console.error(err);
     });
   }, []);
 
@@ -59,7 +66,7 @@ const Navbar = (props) => {
       </Link>
       <div className="flex">
         <div className="text-sm w-24  my-auto flex justify-end sm:w-full sm:mr-2">
-          <p className="truncate">Hi! {profile.username}</p>
+          <p className="truncate">{profile.username}</p>
         </div>
         <button onClick={() => setIsOpen(!isOpen)} className="">
           <MenuIcon className="h-8 w-8 mx-1" />
