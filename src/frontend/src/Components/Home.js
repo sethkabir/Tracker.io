@@ -4,22 +4,57 @@ import {
   UserCircleIcon,
   ExclamationCircleIcon,
 } from "@heroicons/react/solid";
+import {
+  HeartIcon,
+  LightningBoltIcon,
+} from "@heroicons/react/outline";
 import Navbar from "./Navbar";
+import Info from "./Info";
 import { Link } from "react-router-dom";
 
-const SideDrawer = () => {
-  return (
-    <div className="hidden sm:bg-blue-200 sm:grow sm:h-screen sm:block ">
-      Side Drawer
-    </div>
-  );
-};
+// const SideDrawer = () => {
+//   return (
+//     <div className="hidden sm:bg-blue-200 sm:grow sm:h-screen sm:block ">
+//       Side Drawer
+//     </div>
+//   );
+// };
 
 const Statistics = () => {
   return (
     <div className="grow grid grid-cols-1">
       <div className="bg-blue-300 rounded-2xl m-5 h-80 sm:h-auto p-5">
         <div>Statistics</div>
+        <div className="w-full shadow stats">
+          <div className="stat">
+            <div className="stat-figure text-primary">
+            <LightningBoltIcon className="h-10 w-10"/>
+            </div>
+            <div className="stat-title">Total Distance Covered</div> 
+            <div className="stat-value text-primary">25.6 Km</div> 
+            <div className="stat-desc">21% more than last month</div>
+          </div> 
+          <div className="stat">
+            <div className="stat-figure text-info">
+              <HeartIcon className="h-10 w-10"/>
+            </div> 
+            <div className="stat-title">Calories Burned</div> 
+            <div className="stat-value text-info">2400 Kcal</div> 
+            <div className="stat-desc">21% more than last month</div>
+          </div> 
+          <div className="stat">
+            <div className="stat-figure text-info">
+              <div className="avatar online">
+                {/* <div className="w-16 h-16 p-1 mask mask-squircle bg-base-100">
+                  <img src="/tailwind-css-component-profile-5@56w.png" alt="Avatar Tailwind CSS Component" className="mask mask-squircle"/>
+                </div> */}
+              </div>
+            </div> 
+            <div className="stat-value">86%</div> 
+            <div className="stat-title">Trip Completion</div> 
+            <div className="stat-desc text-info">2.3 Km remaining</div>
+          </div>
+        </div>
       </div>
     </div>
   );
@@ -82,9 +117,12 @@ const MainPage = () => {
 //renders the sidedrawer + mainpage
 const Home = () => {
   return (
-    <div className="flex absolute z-0 sm:relative">
-      {/* <SideDrawer /> */}
-      <MainPage />
+    <div>
+      <div className="flex absolute z-0 sm:relative">
+        {/* <SideDrawer /> */}
+        <MainPage />
+      </div>
+      <Info />
     </div>
   );
 };
