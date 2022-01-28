@@ -9,12 +9,13 @@ const Loading = () => {
 
   //append the url to make a post request to discord
   const code = queryParams.get("code");
+  const redirect_uri = (window.location.port === 8080) ? "http://127.0.0.1:8080/auth/discord" : "http://127.0.0.1:3000/auth/discord" 
   const params = new URLSearchParams();
   params.append("client_id", "930069736736301067");
   params.append("client_secret", "qJ4oVdKFyRIWST7jm8WC2yyjgoADDnqV");
   params.append("grant_type", "authorization_code");
   params.append("code", code);
-  params.append("redirect_uri", "http://127.0.0.1:3000/auth/discord");
+  params.append("redirect_uri", redirect_uri);
   params.append("scope", "identify");
 
   //POST REQUEST (to obtain the access token)
