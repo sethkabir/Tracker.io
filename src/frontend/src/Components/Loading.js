@@ -1,6 +1,6 @@
 //loading screen post discord authorization
 import axios from "axios";
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 
 const Loading = () => {
@@ -9,7 +9,7 @@ const Loading = () => {
 
   //append the url to make a post request to discord
   const code = queryParams.get("code");
-  const redirect_uri = (window.location.port === 8080) ? "http://127.0.0.1:8080/auth/discord" : "http://127.0.0.1:3000/auth/discord" 
+  const redirect_uri = (window.location.port === "3000") ? "http://127.0.0.1:3000/auth/discord" : "http://127.0.0.1:8080/auth/discord" 
   const params = new URLSearchParams();
   params.append("client_id", "930069736736301067");
   params.append("client_secret", "qJ4oVdKFyRIWST7jm8WC2yyjgoADDnqV");
@@ -19,7 +19,7 @@ const Loading = () => {
   params.append("scope", "identify");
 
   //POST REQUEST (to obtain the access token)
-  const [access_token, setAccsessToken] = useState(null);
+  // const [access_token, setAccsessToken] = useState(null);
   // const [response, setResponse] = useState(null);
   // GET REQUEST (to send the obtained token back to discord for authentication)
 
@@ -31,7 +31,7 @@ const Loading = () => {
         },
       })
       .then((res) => {
-        setAccsessToken(res.data.access_token);
+        getUserInfo(res.data.access_token);
       })
       .catch((err) => {
         console.error(err);
@@ -41,31 +41,34 @@ const Loading = () => {
 
   // Get user info
   const navigate = useNavigate();
-  useEffect(() => {
-    axios
-      .get("https://discord.com/api/v8/users/@me", {
-        headers: {
-          authorization: `Bearer ${access_token}`,
-        },
-      })
+  async function getUserInfo(access_token) {
+    await axios({
+      method: "get",
+      url: "https://discord.com/api/v8/users/@me",
+      headers: {
+        authorization: `Bearer ${access_token}`,
+      },
+    })
       .then((res) => {
-        console.log(res.data)
         discordLogin(res.data)
       })
       .catch((err) => {
         console.error(err);
       });
       // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [access_token]);
+  }
 
-  async function discordLogin(data){
+  async function discordLogin(data) {
+    // Adds CSRF token
+    axios.defaults.xsrfHeaderName = "X-CSRFTOKEN";
+    axios.defaults.xsrfCookieName = "csrftoken";
+
     let item = {
       username: data.id,
       first_name: data.username,
       last_name: data.discriminator,
       email: data.email
     };
-    console.log(item)
     await axios({
       method: "post",
       url: "http://127.0.0.1:8080/api/auth/discord-login",
@@ -76,7 +79,7 @@ const Loading = () => {
         navigate("/dashboard/home"); 
       })
       .catch((error) => {
-        console.log(error.response);
+        console.error(error.response);
       });
   }
 
