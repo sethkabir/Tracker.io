@@ -14,7 +14,7 @@ const Loading = () => {
   params.append("client_secret", "qJ4oVdKFyRIWST7jm8WC2yyjgoADDnqV");
   params.append("grant_type", "authorization_code");
   params.append("code", code);
-  params.append("redirect_uri", "http://127.0.0.1:8080/auth/discord");
+  params.append("redirect_uri", "http://127.0.0.1:3000/auth/discord");
   params.append("scope", "identify");
 
   //POST REQUEST (to obtain the access token)
@@ -35,8 +35,10 @@ const Loading = () => {
       .catch((err) => {
         console.error(err);
       });
+      // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [useLocation().pathname]);
 
+  // Get user info
   const navigate = useNavigate();
   useEffect(() => {
     axios
@@ -45,13 +47,41 @@ const Loading = () => {
           authorization: `Bearer ${access_token}`,
         },
       })
-      .then((data) => {
-        navigate("/dashboard/home");  
+      .then((res) => {
+        console.log(res.data)
+        discordLogin(res.data)
+      })
+      .catch((err) => {
+        console.error(err);
       });
+      // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [access_token]);
+
+  async function discordLogin(data){
+    let item = {
+      username: data.id,
+      first_name: data.username,
+      last_name: data.discriminator,
+      email: data.email
+    };
+    console.log(item)
+    await axios({
+      method: "post",
+      url: "http://127.0.0.1:8080/api/auth/discord-login",
+      data: item,
+    })
+      .then((res) => {
+        console.log(res.data);
+        navigate("/dashboard/home"); 
+      })
+      .catch((error) => {
+        console.log(error.response);
+      });
+  }
 
   return (
     <div className="fixed top-0 left-0 right-0 bottom-0 w-full h-screen z-50 overflow-hidden bg-primary opacity-75 flex flex-col items-center justify-center">
+      <div className="btn btn-ghost btn-circle loading"></div>
       <h2 className="flex animate-pulse">
         <div className="text-center text-white text-xl font-semibold ">
           Loading
