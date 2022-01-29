@@ -64,14 +64,15 @@ const Loading = () => {
     axios.defaults.xsrfCookieName = "csrftoken";
 
     let item = {
-      username: data.id,
+      username: data.username,
       first_name: data.username,
       last_name: data.discriminator,
-      email: data.email
+      email: data.email,
+      login_type: "discord"
     };
     await axios({
       method: "post",
-      url: "http://127.0.0.1:8080/api/auth/discord-login",
+      url: "http://127.0.0.1:8080/api/auth/login",
       data: item,
     })
       .then((res) => {
