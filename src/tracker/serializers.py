@@ -13,6 +13,14 @@ class ProfileSerializer(serializers.ModelSerializer):
         model = Profile
         fields = ['contact', 'address', 'picture']
 
+    def update(self, instance, validated_data):
+        instance.contact = validated_data.get('contact', instance.contact)
+        instance.address = validated_data.get('address', instance.address)
+        instance.picture = validated_data.get('picture', instance.picture)
+        instance.save()
+
+        return instance
+
 class UserSerializer(serializers.ModelSerializer):
     profile = ProfileSerializer(required=True)
 
@@ -123,10 +131,17 @@ class ContactSerializer(serializers.ModelSerializer):
         contact.save()
         return contact
 
-# {
-#     "first_name": "angie",
-#     "last_name": "jolly",
-#     "contact": "+91-987315679",
-#     "email": "jollygood@angie.com",
-#     "address": "Hollywood"
-# }
+class ProfilePicSerializer(serializers.ModelSerializer):
+    image = serializers.ImageField(required=False)
+
+    class Meta:
+        model = User
+        fields = ['image']
+
+    def update(self, instance, validated_data):
+        profile = Profile.objects.get(user=instance)
+        profile.picture = validated_data.get('image', None)
+        profile.save()
+        
+
+        return instance

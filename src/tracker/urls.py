@@ -22,12 +22,12 @@ urlpatterns = [
     path('', api_overview),
     path('auth/signup', signup),
     path('auth/login', login),
-    # path('auth/discord-login', discord_login),
     path('auth/logout', logout),
     path("auth/change-password", change_password),
     path("user", current_user_details),
     path("user/<int:pk>", user_details),
     path("user/update-profile", update_profile),
+    path("user/update-profile-image", update_profile_image),
     path("user/add-contact", add_contact),
     path("user/get-contacts", get_contacts),    
 ]

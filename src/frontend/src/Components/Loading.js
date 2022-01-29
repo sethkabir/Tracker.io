@@ -76,7 +76,6 @@ const Loading = () => {
       data: item,
     })
       .then((res) => {
-        console.log(res.data);
         navigate("/dashboard/home"); 
       })
       .catch((error) => {
