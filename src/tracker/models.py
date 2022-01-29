@@ -5,9 +5,9 @@ from django.conf import settings
 
 class Profile(models.Model):
     user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
-    contact = models.CharField(max_length=100)
-    address = models.CharField(max_length=200)
-    picture = models.ImageField(blank=True)
+    contact = models.CharField(max_length=100,blank=True)
+    address = models.CharField(max_length=200,blank=True)
+    picture = models.ImageField(blank=True,null=True)
 
 class EmergencyContact(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)

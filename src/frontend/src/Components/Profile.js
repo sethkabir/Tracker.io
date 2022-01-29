@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 import { PencilIcon } from "@heroicons/react/solid";
 import { Outlet } from "react-router-dom";
 
+let username = "Guest";
 const ChangePassword = () => {
   return (
     <div>
