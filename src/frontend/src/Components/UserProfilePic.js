@@ -16,21 +16,31 @@ const UserProfilePic = (props) => {
   useEffect(() => {
     axios.get("http://127.0.0.1:8080/api/user").then((response) => {
       setProfile(response.data);
+      if(response.data.profile.picture) {
+        setPreview(response.data.profile.picture)
+      }
     });
   }, []);
 
   useEffect(() => {
-    if (preview) {
-      let item = { username: profile.username, profile: { image: preview } };
+    if (image) {
+      let item = new FormData()
+	  item.append("username", profile.username)
+	  item.append("picture", image)
+      console.log(item)
       axios
-        .put("http://127.0.0.1:8080/api/user/update-profile", item)
+        .put("http://127.0.0.1:8080/api/user/update-profile-image", item, {
+          headers: {
+            'content-type': 'multipart/form-data'
+          }
+        })
         .then((res) => {
           console.log(res);
         })
         .catch((err) => console.error(err));
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [preview]);
+  }, [image]);
 
   // async function storeImage(x){
   //   let item = {username ,x};
