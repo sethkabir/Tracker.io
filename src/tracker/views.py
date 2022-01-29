@@ -3,8 +3,9 @@ from django.contrib.auth import get_user_model
 from matplotlib.style import context
 
 from rest_framework import status
-from rest_framework.decorators import api_view, permission_classes
+from rest_framework.decorators import api_view, permission_classes, parser_classes
 from rest_framework.response import Response
+from rest_framework.parsers import MultiPartParser, FormParser
 from rest_framework.permissions import IsAuthenticated, IsAdminUser
 
 from .serializers import *
@@ -107,6 +108,19 @@ def update_profile(request):
     if serializer.is_valid():
         serializer.save()
         return Response({'success': 'user profile updated'}, status=status.HTTP_202_ACCEPTED)
+    return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+@api_view(['PUT'])
+@parser_classes([MultiPartParser, FormParser])
+@permission_classes([IsAuthenticated])
+def update_profile_image(request):
+    '''Updates current user's profile picture'''
+    profile = Profile.objects.get(user=request.user)
+    serializer = ProfileSerializer(profile, data=request.data)
+    if serializer.is_valid():
+        serializer.save()
+        return Response({'success': 'user profile image updated'}, status=status.HTTP_202_ACCEPTED)
     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
