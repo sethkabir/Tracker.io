@@ -18,7 +18,7 @@ mapboxgl.workerClass =require("worker-loader!mapbox-gl/dist/mapbox-gl-csp-worker
 
 const geolocateControlStyle = {
   right: 10,
-  top: 20,
+  top: 50,
 };
 const MapComponent = () => {
   const [files, setFiles] = useState(null);
@@ -77,7 +77,7 @@ const MapComponent = () => {
           }}
           className=""
         >
-          <MapIcon className="h-10 w-10 hover:rotate-90 transition-all duration-300 fill-black" />
+          <MapIcon className="h-10 w-10 hover:rotate-90 transition-all duration-300 fill-black mt-44" />
         </button>
       </div>
 

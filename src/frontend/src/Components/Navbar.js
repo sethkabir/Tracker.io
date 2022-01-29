@@ -99,10 +99,12 @@ const Navbar = (props) => {
             </div>
           </div>
           <div className="py-1">
+          <Link to="/dashboard/emergencyContact">
             <div className="group flex itme px-4 py-2 text-sm text-black hover:bg-blue-400 hover:text-white">
               <ExclamationCircleIcon className="mr-3 h-5 w-5 text-gray-400 group-hover:text-white" />
               Emergency Contact
             </div>
+            </Link>
           </div>
           <div className="py-1">
             <Link to="/dashboard/profile/showProfile">

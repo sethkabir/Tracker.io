@@ -55,7 +55,7 @@ const EmergencyContact = () => {
         <div>
             <Navbar />
             <Contacts />
-            <AddContact />
+
         </div>
     )
 }
@@ -98,6 +98,7 @@ const Contacts = () => {
             <div className="grid grid-cols-1 gap-4">
                 {cards}
             </div>
+            <AddContact />
         </div>
     )
 }
