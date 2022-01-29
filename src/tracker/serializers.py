@@ -62,6 +62,25 @@ class SignupSerializer(serializers.ModelSerializer):
         profile.save()
         return user
 
+class DiscordLoginSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = ['username', 'first_name', 'last_name', 'email']
+    
+    def create(self, validated_data):
+        user, created = User.objects.get_or_create(
+            username=validated_data['username'],
+            email=validated_data['email'],
+            first_name=validated_data['first_name'],
+            last_name=validated_data['last_name']
+        )
+        if created:
+            user.set_unusable_password()
+            user.save()
+            profile = Profile.objects.create(user=user)
+            profile.save()
+        return user
+
 class ChangePasswordSerializer(serializers.Serializer):
     current_password = serializers.CharField(max_length=128, write_only=True, required=True)
     new_password1 = serializers.CharField(max_length=128, write_only=True, required=True)

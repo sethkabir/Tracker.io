@@ -20,12 +20,12 @@ const Login = () => {
 
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-
   const navigate = useNavigate();
 
   //POST request (manual login)
   async function login() {
-    let item = { username, password };
+    const login_type = "default";
+    let item = { username, password, login_type};
     console.log(item);
 
     await axios({
@@ -46,29 +46,6 @@ const Login = () => {
       });
   }
 
-  // // this is for the discord login functionality
-  // async function logDiscord() {
-  //   let item = {
-  //     client_id: "930069736736301067",
-  //     client_secret: "qJ4oVdKFyRIWST7jm8WC2yyjgoADDnqV",
-  //     grant_type: "authorization_code",
-  //     code: code,
-  //     redirect_uri: "http://127.0.0.1:8080/dashboard/home",
-  //   };
-  //   console.log();
-
-  //   await axios({
-  //     method: "post",
-  //     url: "",
-  //     data: item,
-  //   })
-  //     .then((res) => {
-  //       console.log(res);
-  //     })
-  //     .catch((error) => {
-  //       console.error(error);
-  //     });
-  // }
 
   return (
     <div className="flex flex-grow flex-col ">

@@ -17,7 +17,6 @@ def api_overview(request):
     api_urls = {
         'signup': 'auth/signup',
         'login': 'auth/login',
-        'discord_login': 'auth/discord-login',
         'logout': 'auth/logout',
         'change_password': 'auth/change-password',
         'current-user-profile': 'user',
@@ -41,27 +40,28 @@ def signup(request):
 @api_view(['POST'])
 def login(request):
     '''Login endpoint'''
-    username = request.data['username']
-    password = request.data['password']
+    username = request.data.get('username', None)
+    password = request.data.get('password', None)
+    login_type = request.data.get("login_type", "default")
     user = authenticate(username=username, password=password)
 
-    if user is not None:
-        auth_login(request, user)
-        return Response(UserSerializer(request.user).data, status=status.HTTP_202_ACCEPTED)
-    return Response({"Error": "User_not_found"}, status=status.HTTP_400_BAD_REQUEST)
+    if login_type == "default":
+        if user is None:
+            return Response({"Error": "User_not_found"}, status=status.HTTP_400_BAD_REQUEST)
+    
+    if login_type == "discord":
+        serializer = DiscordLoginSerializer(data=request.data)
+        user = serializer.create(request.data)
 
-@api_view(['POST'])
-def discord_login(request):
-    '''Discord login endpoint'''
-    username = request.data['username']
-    return Response({"Hello": username})
-    # user = authenticate(username=username, password=password)
+    auth_login(request, user)
+    return Response(UserSerializer(request.user).data, status=status.HTTP_202_ACCEPTED)
 
-    # if user is not None:
-    #     auth_login(request, user)
-    #     return Response(UserSerializer(request.user).data, status=status.HTTP_202_ACCEPTED)
-    # return Response({"Error": "User_not_found"}, status=status.HTTP_400_BAD_REQUEST)
-
+# @api_view(['POST'])
+# def discord_login(request):
+#     '''Discord login endpoint'''
+#     username = request.data['username']
+#     serializer = DiscordLoginSerializer(data=request.data)
+    
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
 def logout(request):
