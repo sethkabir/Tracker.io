@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import React, { useState } from "react";
 import axios from "axios";
-import mapLogo from "../Images/p3.jpg";
+import mapLogo from "../Images/back_bike_1.jpg";
 import { EyeIcon } from "@heroicons/react/solid";
 
 const SignUp = () => {

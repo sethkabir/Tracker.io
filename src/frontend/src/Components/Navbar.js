@@ -62,7 +62,7 @@ const Navbar = (props) => {
   return (
     <div className="flex place-content-between m-2 z-30">
       <Link to="/dashboard/home">
-        <div className="font-bold text-3xl">TrackerApp</div>
+        <div className="font-bold text-3xl">Bike Buddy</div>
       </Link>
       <div className="flex">
         <div className="text-sm w-24  my-auto flex justify-end sm:w-full sm:mr-2">

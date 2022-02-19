@@ -1,4 +1,4 @@
-import logo from "../Images/p3.jpg";
+import logo from "../Images/back_bike_1.jpg";
 import { Outlet } from "react-router-dom";
 
 // The image present in the left side

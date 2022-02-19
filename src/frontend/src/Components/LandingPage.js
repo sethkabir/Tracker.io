@@ -1,5 +1,5 @@
 import { Link} from "react-router-dom";
-import bike from '../Images/bike.gif'
+import bike from '../Images/motorbike.gif'
 
 const LandingPage = () => {
   return (

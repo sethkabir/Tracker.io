@@ -1,5 +1,5 @@
 import { Link, useNavigate } from "react-router-dom";
-import mapLogo from "../Images/p3.jpg";
+import mapLogo from "../Images/back_bike_1.jpg";
 import axios from "axios";
 import { useState } from "react";
 import { EyeIcon } from "@heroicons/react/solid";
